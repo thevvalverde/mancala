@@ -3,9 +3,9 @@ function display() {
     let options = document.getElementById("pc-options");
 
     if(checkbox.checked == true) {
-        options.style.display = "block";
+        options.classList.remove("hidden");
     } else {
-        options.style.display = "none";
+        options.classList.add("hidden");
     }
 
 }

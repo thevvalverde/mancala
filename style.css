@@ -1,63 +1,22 @@
 body {
     padding: 3%;
     background-color: #EADEB8;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 h1 {
     font-size: 3rem;
 }
 
-.labels {
-    display: block;
-
+table {
+    padding: 8px;
 }
 
-.options-div {
-    margin: 15px;
-}
-
-.switch {
-    margin: 0;
-	border: 1px solid #000;
-    background-color: aliceblue;
-	border-radius: 3px;
-    box-shadow: 0 2px 2px rgba(0,0,0,0.05), inset 0 -15px 15px -12px rgba(0,0,0,0.05);
-	display: inline-block;
-	position: relative;
-    appearance: none;
-    width: 50px;
-    height: 34px;
-}
-
-.switch:checked {
-    background-color: rgb(23, 211, 70);
-}
-
-.switch:active, .switch:checked:active {
-	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
-}
-
-.switch:checked:after {
-	content: '\2714';
-	font-size: 22px;
+td {
     text-align: center;
-	color: black;
 }
 
-.inline-title {
-    display: inline;
-}
-
-#configurations {
-    border: 2px solid black;
-    border-radius: 5%;
-    box-shadow: 5px 5px 2px 2px rgba(0,0,0,0.05), inset 0 -15px 15px -12px rgba(0,0,0,0.05);
-    background-color: #CFB784;
-    width: 30%;
-}
-
-#seednum {
+input[type=number] {
     background-color: aliceblue;
     border: 1px solid black;
     width: 48px;
@@ -65,3 +24,51 @@ h1 {
     padding: 0;
 }
 
+.hidden {
+    display: none;
+}
+
+.switch {
+    margin: 0;
+    border: 1px solid #000;
+    background-color: aliceblue;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
+    display: inline-block;
+    position: relative;
+    appearance: none;
+    height: 24px;
+    width: 24px;
+}
+
+.switch:checked {
+    background-color: #a51313;
+}
+
+.switch:active,
+.switch:checked:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.switch:checked:after {
+    content: '\2714';
+    font-size: 20px;
+    bottom: 0;
+    left: 10%;
+    position: absolute;
+    text-align: center;
+    color: aliceblue;
+}
+
+.inline-title {
+    display: inline;
+    height: 100%;
+}
+
+#configurations {
+    border: 2px solid black;
+    border-radius: 5%;
+    box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
+    background-color: #CFB784;
+    width: 30%;
+}
