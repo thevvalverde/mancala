@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Mancala</title>
+</head>
+
+<body>
+    <h1>Mancala</h1>
+    <div id="configurations">
+        <form action="">
+            <div class="options-div">
+                <h3>Número de Cavidades:</h3>
+                <input type="radio" name="cavity-number" id="cavnum">
+                <label for="cavnum">2</label>
+                <input type="radio" name="cavity-number" id="cavnum">
+                <label for="cavnum">3</label>
+                <input type="radio" name="cavity-number" id="cavnum">
+                <label for="cavnum">6</label>
+                <input type="radio" name="cavity-number" id="cavnum">
+                <label for="cavnum">9</label>
+            </div>
+            <div class="options-div">
+                <h3 class="inline-title">Número incial de sementes:</h3>
+                <input type="number" name="seeds-number" id="seednum">
+            </div>
+            <div class="options-div">
+                <h3 class="inline-title">Jogar contra PC?</h3>
+                <input type="checkbox" class="switch" id="pc-checkbox" onclick="display()">
+            </div>
+            <div class="options-div" id="pc-options" style="display: none;">
+                <h3>Dificuldade</h3>
+                <input type="radio" name="difficulty-number" id="difnum">
+                <label for="difnum">1</label>
+                <input type="radio" name="difficulty-number" id="difnum">
+                <label for="difnum">2</label>
+                <br>
+
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
