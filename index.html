@@ -20,24 +20,29 @@
           <td class="tdTableOptions">
             <table>
               <tr>
-                <td class="tdTableOptions">
+                <th class="tdTableOptions">
                   Jogador 1
                 </td>
               </tr>
               <tr>
-                <td class="tdTableOptions">
+                <td class="tdJogadorNome">
                   <input type="text" id="Jogador1" name="nomeJogador">
                 </td>
               </tr>
               <tr>
-                <td class="tdTableOptions">
+                <th class="tdTableOptions">
                   Jogador 2
                 </td>
               </tr>
               <tr>
-                <td class="tdTableOptions">
+                <td class="tdJogadorNome">
                   <input type="text" id="Jogador2" name="nomeJogador">
                 </td>
+              </tr>
+              <tr class="hidden" id="pc-options">
+                <td class="tdTableOptions">
+                  <b>Dificuldade</b>
+                  <input type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
               </tr>
             </table>
           </td>
@@ -57,7 +62,7 @@
                   <label for="cavnum">2</label>
                   <input type="radio" name="cavity-number" id="cavnum">
                   <label for="cavnum">3</label>
-                  <input type="radio" name="cavity-number" id="cavnum">
+                  <input type="radio" name="cavity-number" id="cavnum" checked="checked">
                   <label for="cavnum">6</label>
                   <input type="radio" name="cavity-number" id="cavnum">
                   <label for="cavnum">9</label>
@@ -68,7 +73,7 @@
                   <h3>Número incial de sementes:</h3>
                 </td>
                 <td class="tdTableOptions">
-                  <input type="number" name="seeds-number" id="seednum" min="0" max="20">
+                  <input type="number" name="seeds-number" id="seednum" min="0" max="40" value="20">
                 </td>
               </tr>
               <tr>
@@ -77,14 +82,6 @@
                 </td>
                 <td class="tdTableOptions">
                   <input type="checkbox" class="switch" id="pc-checkbox" onclick="display()">
-                </td>
-              </tr>
-              <tr class="hidden" id="pc-options">
-                <td class="tdTableOptions">
-                  <h3>Dificuldade</h3>
-                </td>
-                <td class="tdTableOptions">
-                  <input type="number" name="difficulty-number" id="difnum" min="1" max="5">
                 </td>
               </tr>
               <!-------------->
@@ -101,10 +98,10 @@
         </tr>
         <tr>
           <td class="tdTutorial">
-                Os jogos de Mancala possuem uma sequência de regras geral de jogo em comum de pegar todas as sementes de uma cavidade (a estratégia), então semear as sementes uma de cada vez de uma cavidade, e captura baseada no estado do tabuleiro. Isto leva à frase em português "Contagem e Captura" algumas vezes usada para descrever as regras. Apesar dos detalhes se diferenciarem substancialmente, esta sequência geral se aplica a todos os jogos.
+                Os jogos de Mancala possuem uma sequência de regras geral que consiste em apanhar todas as sementes de uma cavidade, então semear as sementes, e captura baseada no estado do tabuleiro são a principal mecânica. Isto leva à frase em português "Contagem e Captura" algumas vezes usada para descrever as regras.
           </td>
           <td class="tdTutorial">
-                O jogo é tipicamente composto por um tabuleiro, construído dos mais variados materiais, com uma série de cavidades distribuídas em fileiras, geralmente duas ou quatro. Alguns jogos são mais frequentemente jogados com buracos cavados na terra, ou esculpidos na pedra. As cavidades também são chamadas de "depressões", "valas" ou "casas". Algumas vezes, grandes cavidades nas extremidades do tabuleiro, chamados de poços, são usadas para o abrigo de peças capturadas. As peças de jogo são sementes, feijões, pedras ou outras pequenas contas similares que são colocadas e transferidas pelas casas durante o jogo. As configurações do tabuleiro variam entre diferentes jogos mas também entre diferentes variações de um nome; por exemplo o Endodoi é jogado com tabuleiros de 2 x 6 a 2 x 10. Com um tabuleiro de duas fileiras, os jogadores geralmente consideram controlar seus respectivos lados do jogo, apesar dos movimentos na maioria das vezes serem feitos para o lado do oponente.
+                O jogo é tipicamente composto por um tabuleiro, com uma série de cavidades distribuídas em fileiras. Algumas vezes, grandes cavidades nas extremidades do tabuleiro, chamados de poços, são usadas para o abrigo de peças capturadas. As peças de jogo são sementes, feijões, pedras que são colocadas e transferidas pelas casas durante o jogo. Com um tabuleiro de duas fileiras, onde os jogadores controlam os seus respectivos lados do jogo.
           </td>
         </tr>
         <tr>
@@ -113,10 +110,10 @@
         </tr>
         <tr>
           <td class="tdTutorial">
-            No começo da vez de um jogador, selecionam uma cavidade com sementes que será semeada no tabuleiro. Esta escolha é geralmente limitada a cavidades no lado atual do jogador no tabuleiro, assim como cavidades com um certo número mínimo de sementes.
+            No começo do turno, seleciona-se uma cavidade com sementes que será semeada no tabuleiro. Esta escolha é geralmente limitada a cavidades no lado atual do jogador no tabuleiro, assim como cavidades com um certo número mínimo de sementes.
           </td>
           <td class="tdTutorial">
-            Dependendo do último buraco semeado em uma volta, um jogador pode capturar sementes de um tabuleiro. Os requerimentos exatos para captura, assim como o que é feito com as sementes capturadas, variam consideravelmente entre os jogos. Tipicamente, uma captura requer que a semeadura termine com um certo número de sementes, ou terminando através do tabuleiro de sementes em configurações específicas.
+            Dependendo do último buraco semeado em um turno, um jogador pode capturar sementes de um tabuleiro. Os requerimentos exatos para captura, assim como o que é feito com as sementes capturadas, uma captura requer que a semeadura termine com um certo número de sementes, ou terminando através do tabuleiro de sementes em configurações específicas.
           </td>
         </tr>
       </table>
