@@ -6,11 +6,13 @@ function display() {
     {
         options.classList.remove("hidden");
         document.getElementById("Jogador2").value = "AI Player";
+        document.getElementById("Jogador2").disabled = true;
     }
     else
     {
         options.classList.add("hidden");
         document.getElementById("Jogador2").value = "";
+        document.getElementById("Jogador2").disabled = false;
     }
 
 }
