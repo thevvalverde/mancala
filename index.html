@@ -9,40 +9,42 @@
 
 <body>
     <header class="headerMancala">
-      <h1>Mancala</h1>
+      <div class="divHeader">
+        <h1>Mancala</h1>
+      </div>
     </header>
 
-    <div id="configurations" class="divHomescreen">
+    <div class="divHomescreen">
       <form>
-        <table class="tableOptions">
+        <table class="tableOptions" style="font-size:18px">
           <tr class="trTableOptions">
             <!------------->
           <td class="tdTableOptions">
             <table>
               <tr>
-                <th class="tdTableOptions" style="font-size:18px">
+                <th class="tdTableOptions">
                   Jogador 1
                 </td>
               </tr>
               <tr>
                 <td class="tdJogadorNome">
-                  <input type="text" id="Jogador1" name="nomeJogador" maxlength="20" style="text-align:center; font-size:18px">
+                  <input class="roundedInput" type="text" id="Jogador1" name="nomeJogador" maxlength="20" style="text-align:center">
                 </td>
               </tr>
               <tr>
-                <th class="tdTableOptions" style="font-size:18px">
+                <th class="tdTableOptions">
                   Jogador 2
                 </td>
               </tr>
               <tr>
                 <td class="tdJogadorNome">
-                  <input type="text" id="Jogador2" name="nomeJogador" maxlength="20" style="text-align:center; font-size:18px">
+                  <input class="roundedInput" type="text" id="Jogador2" name="nomeJogador" maxlength="20" style="text-align:center">
                 </td>
               </tr>
               <tr class="hidden pc-options">
                 <td class="tdTableOptions">
                   <b>Dificuldade</b>
-                  <input type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
+                  <input class="roundedInput roundedInputNumber" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
               </tr>
             </table>
           </td>
@@ -76,7 +78,7 @@
                   <h3>Número incial de sementes:</h3>
                 </td>
                 <td class="tdTableOptions">
-                  <input type="number" name="seeds-number" id="seednum" min="0" max="40" value="20">
+                  <input class="roundedInput roundedInputNumber" type="number" name="seeds-number" id="seednum" min="0" max="40" value="20">
                 </td>
               </tr>
               <tr>
@@ -94,29 +96,29 @@
         </table>
       </form>
       <hr style="border: 1px solid maroon;">
-      <table>
+      <table class="Intructions">
         <tr>
           <th class="tdTutorial">Regras Gerais</th>
-          <th class="tdTutorial">Componentes</th>
+          <th class="tdTutorial">Mover Peças</th>
         </tr>
         <tr>
           <td class="tdTutorial">
-                Os jogos de Mancala possuem uma sequência de regras geral que consiste em apanhar todas as sementes de uma cavidade, então semear as sementes, e captura baseada no estado do tabuleiro são a principal mecânica. Isto leva à frase em português "Contagem e Captura" algumas vezes usada para descrever as regras.
+              O jogo passa-se num tabuleiro com várias cavidades e cada uma contém um certo número de sementes. O objectivo do jogo é conseguir mais pontos que o adversário, movendo sementes para a própria área ou capturando as sementes do adversário.
           </td>
           <td class="tdTutorial">
-                O jogo é tipicamente composto por um tabuleiro, com uma série de cavidades distribuídas em fileiras. Algumas vezes, grandes cavidades nas extremidades do tabuleiro, chamados de poços, são usadas para o abrigo de peças capturadas. As peças de jogo são sementes, feijões, pedras que são colocadas e transferidas pelas casas durante o jogo. Com um tabuleiro de duas fileiras, onde os jogadores controlam os seus respectivos lados do jogo.
+              O jogador, na sua vez, clica num buraco (da fila mais perto de si) que tenha pelo menos uma semente. Esta acção retirará todas as sementes do buraco selecionado e coloca-as, uma a uma, nos buracos seguintes, no sentido contrário ao dos ponteiros do relógio. A área do próprio jogador é também usada nesta separação de sementes e, quando uma semente é lá colocada, o jogador ganha um ponto. O jogador não pode colocar sementes na área do jogador adversário. Se a última semente (da jogada actual) for colocada na própria área, o jogador continua a seleccionar outro buraco não vazio.
           </td>
         </tr>
         <tr>
-          <th class="tdTutorial">Semeadura</th>
-          <th class="tdTutorial">Captura</th>
+          <th class="tdTutorial">Capturar Peças</th>
+          <th class="tdTutorial">Como Terminar o Jogo?</th>
         </tr>
         <tr>
           <td class="tdTutorial">
-            No começo do turno, seleciona-se uma cavidade com sementes que será semeada no tabuleiro. Esta escolha é geralmente limitada a cavidades no lado atual do jogador no tabuleiro, assim como cavidades com um certo número mínimo de sementes.
+            Se a última semente (da jogada actual) for colocada num buraco vazio (no lado do jogador), todas as sementes da mesma coluna, na linha adversária são capturadas e colocadas na área do jogador que fez a jogada.
           </td>
           <td class="tdTutorial">
-            Dependendo do último buraco semeado em um turno, um jogador pode capturar sementes de um tabuleiro. Os requerimentos exatos para captura, assim como o que é feito com as sementes capturadas, uma captura requer que a semeadura termine com um certo número de sementes, ou terminando através do tabuleiro de sementes em configurações específicas.
+            O jogo termina quando um dos jogadores não puder fazer a sua jogada - por não haver sementes na sua fila. Quando isso ocorre, todas as sementes que sobram são adicionadas à pontuação do adversário. O jogador com a maior pontuação ganha o jogo.
           </td>
         </tr>
       </table>
