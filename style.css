@@ -15,12 +15,12 @@ body
   min-height: 100%;
   border: 0;
   margin: 0;
-  font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif, serif;
+  font-family: sans-serif, 'Times New Roman', 'Georgia', 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', serif;
 }
 
 h1
 {
-    font-size: 2.2rem;
+    font-size: 3rem;
 }
 
 table {
@@ -139,7 +139,7 @@ input[type='radio']:checked:after
 
 .headerMancala
 {
-  margin-top: -3px;
+  margin-top: 10px;
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 2%;
@@ -154,12 +154,12 @@ input[type='radio']:checked:after
   background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
   border: 3px solid black;
   border-radius: 35px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  font-family: serif;
+  font-family: sans-serif;
   text-align: center;
-  margin-left: 42%;
-  margin-right: 42%;
+  margin-left: 38%;
+  margin-right: 38%;
+  box-shadow: 0px 2px 0px 3px #291816;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 .tableOptions
@@ -224,7 +224,7 @@ input[type='radio']:checked:after
 
 .Intructions
 {
-  font-family: serif;
+  font-family: 'Times New Roman';
   font-size: 18px;
 }
 
