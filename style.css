@@ -8,11 +8,11 @@ html
 
 body
 {
-  padding: 0;
+  padding: 1%;
   background-color: #EADEB8;
   background-image: url('woodbackground.jpeg');
   background-size: cover;
-  min-height: 100%;
+  height: auto;
   border: 0;
   margin: 0;
   font-family: sans-serif, 'Times New Roman', 'Georgia', 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', serif;
