@@ -8,6 +8,7 @@ html
 
 body
 {
+  font-size: 80%;
   padding: 0;
   background-color: #EADEB8;
   background-image: url('woodbackground.jpeg');
@@ -20,11 +21,16 @@ body
 
 h1
 {
-    font-size: 2.2rem;
+    font-size: 1.8vw;
+    letter-spacing: 0.7vw;
+}
+
+hr {
+  margin: 0;
 }
 
 table {
-    padding: 5px;
+    padding: 1%;
 }
 
 td {
@@ -124,7 +130,7 @@ input[type='radio']:checked:after
     height: 100%;
 }
 
-.divHomescreen
+#div-homescreen
 {
   margin-left: auto;
   margin-right: auto;
@@ -137,18 +143,18 @@ input[type='radio']:checked:after
   background-color: #CFB784;
 }
 
-.headerMancala
+.header-mancala
 {
   margin-top: -3px;
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   width: 100%;
   height: 100%;
   align-items: center;
 }
 
-.divHeader
+.div-header
 {
   color: white;
   background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
@@ -162,27 +168,28 @@ input[type='radio']:checked:after
   margin-right: 42%;
 }
 
-.tableOptions
+.table-options
 {
+  padding: 5px;
   text-align: center;
   width: 100%;
   border: 0;
 }
 
-.trTableOptions, .tdTableOptions
+.tr-table-options, .td-table-options
 {
   padding: 0;
   border: 0;
   margin: 0;
 }
 
-.tdTableOptions
+.td-table-options
 {
   width: 33.3%;
   text-align: center;
 }
 
-.tdJogadorNome
+.td-player-name
 {
   padding: 20px;
   padding-top: 5px;
@@ -190,7 +197,7 @@ input[type='radio']:checked:after
   text-align: center;
 }
 
-.tdTutorial
+.td-tutorial
 {
   text-align: left;
   padding: 10px;
@@ -198,7 +205,7 @@ input[type='radio']:checked:after
   padding-right: 30px;
 }
 
-.myButton {
+.my-button {
 	box-shadow: 0px 4px 0px 1px #291816;
 	background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
 	background-color:#7d5d3b;
@@ -212,30 +219,29 @@ input[type='radio']:checked:after
 	text-decoration:none;
 	text-shadow:0px 1px 0px #4d3534;
 }
-.myButton:hover {
+.my-button:hover {
 	background:linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
 	background-color:#634b30;
 }
-.myButton:active {
-	position:relative;
+.my-button:active {
 	top:2px;
   box-shadow: 0px 2px 0px 1px #291816;
 }
 
-.Intructions
+.intructions
 {
   font-family: serif;
-  font-size: 18px;
+  font-size: 1.2vw;
 }
 
-.roundedInput
+.rounded-input
 {
   border: 2px solid black;
   border-radius: 25px;
   font-size: 18px;
 }
 
-.roundedInputNumber
+.rounded-input-number
 {
   border-radius: 20px;
 }
