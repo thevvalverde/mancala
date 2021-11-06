@@ -25,30 +25,28 @@
               <tr>
                 <th class="td-table-options">
                   Jogador 1
+            </tr>
+            <tr>
+              <td class="td-player-name">
+                <input class="rounded-input" type="text" id="player1Input" name="player-name" maxlength="20" style="text-align:center">
+              </td>
+            </tr>
+            <tr>
+              <th class="td-table-options">
+                Jogador 2
+            </tr>
+            <tr>
+              <td class="td-player-name">
+                <input class="rounded-input" type="text" id="player2Input" name="player-name" maxlength="20" style="text-align:center">
+              </td>
+            </tr>
+            <tr class="hidden pc-options">
+              <td class="td-table-options">
+                <b>Dificuldade</b>
+                <input class="rounded-input rounded-input-number" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
+            </tr>
+          </table>
           </td>
-        </tr>
-        <tr>
-          <td class="td-player-name">
-            <input class="rounded-input" type="text" id="player1" name="player-name" maxlength="20" style="text-align:center">
-          </td>
-        </tr>
-        <tr>
-          <th class="td-table-options">
-            Jogador 2
-            </td>
-        </tr>
-        <tr>
-          <td class="td-player-name">
-            <input class="rounded-input" type="text" id="player2" name="player-name" maxlength="20" style="text-align:center">
-          </td>
-        </tr>
-        <tr class="hidden pc-options">
-          <td class="td-table-options">
-            <b>Dificuldade</b>
-            <input class="rounded-input rounded-input-number" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
-        </tr>
-      </table>
-      </td>
       <!----------------------------->
       <td class="td-table-options">
         <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame()">
@@ -64,14 +62,14 @@
               <h3>Número de Cavidades:</h3>
             </td>
             <td class="td-table-options">
-              <input type="radio" name="cavity-number" id="cavnum" value="2">
-              <label for="cavnum">2</label>
-              <input type="radio" name="cavity-number" id="cavnum" value="3">
-              <label for="cavnum">3</label>
-              <input type="radio" name="cavity-number" id="cavnum" value="6" checked="checked">
-              <label for="cavnum">6</label>
-              <input type="radio" name="cavity-number" id="cavnum" value="9">
-              <label for="cavnum">9</label>
+              <input type="radio" name="cavity-number" id="cavnum2" value="2">
+              <label for="cavnum2">2</label>
+              <input type="radio" name="cavity-number" id="cavnum3" value="3">
+              <label for="cavnum3">3</label>
+              <input type="radio" name="cavity-number" id="cavnum6" value="6" checked="checked">
+              <label for="cavnum6">6</label>
+              <input type="radio" name="cavity-number" id="cavnum9" value="9">
+              <label for="cavnum9">9</label>
             </td>
           </tr>
           <tr>
@@ -125,18 +123,55 @@
     </table>
   </div>
 
-  <div class="hidden" id="div-gameboard">
-    <input type="button" id="start" name="Start" value="Back" class="my-button" style="position: sticky;" onclick="quitGame()">
-    <div class="game-board">
-      <div class="container left-container"></div>
-      <div class="hole-container">
-        <div class="row" id="upper-row">
+  <div class="hidden" id="div-gameboard" style="opacity: 0">
+    <table class="tabuleiro">
+      <tr>
+        <td class="tdTabuleiro">
+          <div id="player1Name" class="playerNameBox" style="margin-left: 12%; margin-right:22%;">
+            Player 1
+          </div>
+        </td>
+        <td class="tdTabuleiro">
+        <input type="button" id="Quit" name="Quit" value="Back" class="my-button" style="position: sticky;" onclick="quitGame()">
+        </td>
+        <td class="tdTabuleiro">
+          <div id="player2Name" class="playerNameBox" style="margin-right: 12%; margin-left:22%;">
+            Player 2
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="tdTabuleiro">
+          <div id="player1Score" class="playerNameBox" style="margin-left: 12%; margin-right:55%;">
+            Score: 0
+          </div>
+        </td>
+        <td class="tdTabuleiro">
+        <input type="button" id="buttonTutorial" name="Tutorial" value="Tutorial" class="my-button" style="position: sticky;" onclick="">
+        </td>
+        <td class="tdTabuleiro">
+          <div id="player2Score" class="playerNameBox" style="margin-right: 12%; margin-left:55%;">
+            Score: 0
+          </div>
+        </td>
+      </tr>
+    </table>
+    <table class="tabuleiro">
+      <tr>
+        <td nowrap="nowrap">
+        <div class="game-board">
+          <div class="container left-container"></div>
+          <div class="hole-container">
+            <div class="row" id="upper-row">
+            </div>
+            <div class="row" id="lower-row">
+            </div>
+          </div>
+          <div class="container right-container"></div>
         </div>
-        <div class="row" id="lower-row">
-        </div>
-      </div>
-      <div class="container right-container"></div>
-    </div>
+        </td>
+      </tr>
+    </table>
   </div>
   <script src="script.js"></script>
 </body>

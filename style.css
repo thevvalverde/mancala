@@ -253,7 +253,7 @@ input[type='radio']:checked:after
   display: flex;
   flex-direction: row;
   height: 400px;
-  margin: 3% 4%;
+  margin: 0% 3%;
 }
 
 .container {
@@ -300,4 +300,31 @@ input[type='radio']:checked:after
 
 .container, .hole {
   margin: 10px;
+}
+
+.tabuleiro
+{
+  text-align: center;
+  align-items: center;
+  height: auto;
+  width: 100%;
+}
+
+.tdTabuleiro
+{
+  width: 33.3%;
+  padding-bottom: 1em;
+}
+
+.playerNameBox
+{
+  box-shadow: 0px 1px 0px 3px #291816;
+	background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+	background-color:#7d5d3b;
+	border-radius: 25px;
+	border:2px solid #54381e;
+	color: white;
+	font-size:18px;
+	font-weight:bold;
+	padding:12px 44px;
 }
