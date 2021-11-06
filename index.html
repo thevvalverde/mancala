@@ -2,136 +2,143 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="style.css">
-    <title>Mancala</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="style.css">
+  <title>Mancala</title>
 </head>
 
 <body>
-    <header class="header-mancala">
-      <div class="div-header">
-        <h1>Mancala</h1>
-      </div>
-    </header>
+  <header class="header-mancala">
+    <div class="div-header">
+      <h1>Mancala</h1>
+    </div>
+  </header>
 
-    <div id="div-homescreen">
-      <form>
-        <table class="table-options" style="font-size:18px">
-          <tr class="tr-table-options">
-            <!------------->
+  <div id="div-homescreen">
+    <form>
+      <table class="table-options" style="font-size:18px">
+        <tr class="tr-table-options">
+          <!------------->
           <td class="td-table-options">
             <table>
               <tr>
                 <th class="td-table-options">
                   Jogador 1
-                </td>
-              </tr>
-              <tr>
-                <td class="td-player-name">
-                  <input class="rounded-input" type="text" id="player1" name="player-name" maxlength="20" style="text-align:center">
-                </td>
-              </tr>
-              <tr>
-                <th class="td-table-options">
-                  Jogador 2
-                </td>
-              </tr>
-              <tr>
-                <td class="td-player-name">
-                  <input class="rounded-input" type="text" id="player2" name="player-name" maxlength="20" style="text-align:center">
-                </td>
-              </tr>
-              <tr class="hidden pc-options">
-                <td class="td-table-options">
-                  <b>Dificuldade</b>
-                  <input class="rounded-input rounded-input-number" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
-              </tr>
-            </table>
           </td>
-            <!----------------------------->
-          <td class="td-table-options">
-            <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame()">
-            <br>
-            <br>
-            <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button">
-          </td>
-            <!----------------------------->
-          <td class="td-table-options">
-            <table>
-              <tr>
-                <td class="td-table-options">
-                  <h3>Número de Cavidades:</h3>
-                </td>
-                <td class="td-table-options">
-                  <input type="radio" name="cavity-number" id="cavnum" value="2">
-                  <label for="cavnum">2</label>
-                  <input type="radio" name="cavity-number" id="cavnum" value="3">
-                  <label for="cavnum">3</label>
-                  <input type="radio" name="cavity-number" id="cavnum" value="6" checked="checked">
-                  <label for="cavnum">6</label>
-                  <input type="radio" name="cavity-number" id="cavnum" value="9">
-                  <label for="cavnum">9</label>
-                </td>
-              </tr>
-              <tr>
-                <td class="td-table-options">
-                  <h3>Número incial de sementes:</h3>
-                </td>
-                <td class="td-table-options">
-                  <input class="rounded-input rounded-input-number" type="number" name="seeds-number" id="seednum" min="0" max="40" value="20">
-                </td>
-              </tr>
-              <tr>
-                <td class="td-table-options">
-                  <h3>Jogar contra PC?</h3>
-                </td>
-                <td class="td-table-options">
-                  <input type="checkbox" class="switch" id="pc-checkbox" onclick="display()">
-                </td>
-              </tr>
-              <!-------------->
-          </table>
-        </td>
         </tr>
+        <tr>
+          <td class="td-player-name">
+            <input class="rounded-input" type="text" id="player1" name="player-name" maxlength="20" style="text-align:center">
+          </td>
+        </tr>
+        <tr>
+          <th class="td-table-options">
+            Jogador 2
+            </td>
+        </tr>
+        <tr>
+          <td class="td-player-name">
+            <input class="rounded-input" type="text" id="player2" name="player-name" maxlength="20" style="text-align:center">
+          </td>
+        </tr>
+        <tr class="hidden pc-options">
+          <td class="td-table-options">
+            <b>Dificuldade</b>
+            <input class="rounded-input rounded-input-number" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
+        </tr>
+      </table>
+      </td>
+      <!----------------------------->
+      <td class="td-table-options">
+        <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame()">
+        <br>
+        <br>
+        <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button">
+      </td>
+      <!----------------------------->
+      <td class="td-table-options">
+        <table>
+          <tr>
+            <td class="td-table-options">
+              <h3>Número de Cavidades:</h3>
+            </td>
+            <td class="td-table-options">
+              <input type="radio" name="cavity-number" id="cavnum" value="2">
+              <label for="cavnum">2</label>
+              <input type="radio" name="cavity-number" id="cavnum" value="3">
+              <label for="cavnum">3</label>
+              <input type="radio" name="cavity-number" id="cavnum" value="6" checked="checked">
+              <label for="cavnum">6</label>
+              <input type="radio" name="cavity-number" id="cavnum" value="9">
+              <label for="cavnum">9</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-table-options">
+              <h3>Número incial de sementes:</h3>
+            </td>
+            <td class="td-table-options">
+              <input class="rounded-input rounded-input-number" type="number" name="seeds-number" id="seednum" min="0" max="40" value="20">
+            </td>
+          </tr>
+          <tr>
+            <td class="td-table-options">
+              <h3>Jogar contra PC?</h3>
+            </td>
+            <td class="td-table-options">
+              <input type="checkbox" class="switch" id="pc-checkbox" onclick="display()">
+            </td>
+          </tr>
+          <!-------------->
         </table>
-      </form>
-      <hr style="border: 1px solid #634b30;">
-      <table class="intructions">
-        <tr>
-          <th class="td-tutorial">Regras Gerais</th>
-          <th class="td-tutorial">Mover Peças</th>
-        </tr>
-        <tr>
-          <td class="td-tutorial">
-              O jogo passa-se num tabuleiro com várias cavidades e cada uma contém um certo número de sementes. O objectivo do jogo é conseguir mais pontos que o adversário, movendo sementes para a própria área ou capturando as sementes do adversário.
-          </td>
-          <td class="td-tutorial">
-              O jogador, na sua vez, clica num buraco (da fila mais perto de si) que tenha pelo menos uma semente. Esta acção retirará todas as sementes do buraco selecionado e coloca-as, uma a uma, nos buracos seguintes, no sentido contrário ao dos ponteiros do relógio. A área do próprio jogador é também usada nesta separação de sementes e, quando uma semente é lá colocada, o jogador ganha um ponto. O jogador não pode colocar sementes na área do jogador adversário. Se a última semente (da jogada actual) for colocada na própria área, o jogador continua a seleccionar outro buraco não vazio.
-          </td>
-        </tr>
-        <tr>
-          <th class="td-tutorial">Capturar Peças</th>
-          <th class="td-tutorial">Como Terminar o Jogo?</th>
-        </tr>
-        <tr>
-          <td class="td-tutorial">
-            Se a última semente (da jogada actual) for colocada num buraco vazio (no lado do jogador), todas as sementes da mesma coluna, na linha adversária são capturadas e colocadas na área do jogador que fez a jogada.
-          </td>
-          <td class="td-tutorial">
-            O jogo termina quando um dos jogadores não puder fazer a sua jogada - por não haver sementes na sua fila. Quando isso ocorre, todas as sementes que sobram são adicionadas à pontuação do adversário. O jogador com a maior pontuação ganha o jogo.
-          </td>
-        </tr>
+      </td>
+      </tr>
       </table>
-    </div>
+    </form>
+    <hr style="border: 1px solid #634b30;">
+    <table class="intructions">
+      <tr>
+        <th class="td-tutorial">Regras Gerais</th>
+        <th class="td-tutorial">Mover Peças</th>
+      </tr>
+      <tr>
+        <td class="td-tutorial">
+          O jogo passa-se num tabuleiro com várias cavidades e cada uma contém um certo número de sementes. O objectivo do jogo é conseguir mais pontos que o adversário, movendo sementes para a própria área ou capturando as sementes do adversário.
+        </td>
+        <td class="td-tutorial">
+          O jogador, na sua vez, clica num buraco (da fila mais perto de si) que tenha pelo menos uma semente. Esta acção retirará todas as sementes do buraco selecionado e coloca-as, uma a uma, nos buracos seguintes, no sentido contrário ao dos ponteiros do relógio. A área do próprio jogador é também usada nesta separação de sementes e, quando uma semente é lá colocada, o jogador ganha um ponto. O jogador não pode colocar sementes na área do jogador adversário. Se a última semente (da jogada actual) for colocada na própria área, o jogador continua a seleccionar outro buraco não vazio.
+        </td>
+      </tr>
+      <tr>
+        <th class="td-tutorial">Capturar Peças</th>
+        <th class="td-tutorial">Como Terminar o Jogo?</th>
+      </tr>
+      <tr>
+        <td class="td-tutorial">
+          Se a última semente (da jogada actual) for colocada num buraco vazio (no lado do jogador), todas as sementes da mesma coluna, na linha adversária são capturadas e colocadas na área do jogador que fez a jogada.
+        </td>
+        <td class="td-tutorial">
+          O jogo termina quando um dos jogadores não puder fazer a sua jogada - por não haver sementes na sua fila. Quando isso ocorre, todas as sementes que sobram são adicionadas à pontuação do adversário. O jogador com a maior pontuação ganha o jogo.
+        </td>
+      </tr>
+    </table>
+  </div>
 
-    <div class="hidden" id="div-gameboard">
-      <input type="button" id="start" name="Start" value="Back" class="my-button" style="position: sticky;" onclick="startGame()">
-      <table>
-
-      </table>
+  <div class="hidden" id="div-gameboard">
+    <input type="button" id="start" name="Start" value="Back" class="my-button" style="position: sticky;" onclick="quitGame()">
+    <div class="game-board">
+      <div class="container left-container"></div>
+      <div class="hole-container">
+        <div class="row" id="upper-row">
+        </div>
+        <div class="row" id="lower-row">
+        </div>
+      </div>
+      <div class="container right-container"></div>
     </div>
-    <script src="script.js"></script>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>

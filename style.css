@@ -245,3 +245,59 @@ input[type='radio']:checked:after
 {
   border-radius: 20px;
 }
+
+.game-board {
+  background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  border-radius: 20px;
+	border:2px solid #130b03;
+  display: flex;
+  flex-direction: row;
+  height: 400px;
+  margin: 3% 4%;
+}
+
+.container {
+  background:linear-gradient(to bottom, #291a0b 5%, #361f04 100%);
+  flex: 1;
+  border-radius: 20px;
+}
+
+.left-container {
+  border: 1px solid rgb(214, 19, 19);
+  left: 5%;
+}
+
+.right-container {
+  border: 1px solid rgb(14, 14, 248);
+  right: 5%;
+}
+
+.hole-container {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+.hole {
+  background:linear-gradient(to bottom, #291a0b 5%, #361f04 100%);
+  border-radius: 20px;
+  flex: 1;
+}
+
+#upper-row .hole {
+  border: 1px solid rgb(214, 19, 19);
+}
+
+#lower-row .hole {
+  border: 1px solid rgb(14, 14, 248);
+}
+
+.container, .hole {
+  margin: 10px;
+}
