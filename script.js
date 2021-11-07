@@ -45,6 +45,7 @@ async function toggleBoard(toggleMode) {
       fade(gameboard);
       await sleep(500);
       gameboard.classList.toggle("hidden");
+      document.getElementById("player1Name").innerHTML = "Player 1";
       homescreen.classList.toggle("hidden");
       unfade(homescreen);
     }
