@@ -2,9 +2,27 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+let playerOneTurn = true;
+
+function updateStatus() {
+    let statusOne = document.getElementById("player-one-status");
+    let statusTwo = document.getElementById("player-two-status");
+
+    if(playerOneTurn) {
+        statusOne.innerHTML = 'Status: Playing';
+        statusTwo.innerHTML = 'Status: Waiting';
+    } else {
+        statusTwo.innerHTML = 'Status: Playing';
+        statusOne.innerHTML = 'Status: Waiting';
+    }
+}
+
 function display() {
     let checkbox = document.getElementById("pc-checkbox");
     let options = document.getElementsByClassName("pc-options");
+
+
+    updateStatus();
 
     if(checkbox.checked == true)
     {
@@ -78,9 +96,12 @@ function unfade(element) {
     }, 10);
 }
 
-function startGame() {
+function startGame(playerStart) {
     var toggleMode = true;
     toggleBoard(toggleMode);
+
+    playerOneTurn = playerStart;
+    updateStatus();
 
     let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
     let seedNumber   = parseInt(document.getElementById("seednum").value);

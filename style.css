@@ -380,6 +380,18 @@ input[type='radio']:checked:after
   font-size: 2em;
 }
 
+.player-status {
+	background:linear-gradient(to bottom, #503b26 5%, #463522 100%);
+	background-color:#553f29;
+  display: inline-block;
+  padding: 2% 10%;
+	color: white;
+	font-size:18px;
+	font-weight:bold;
+	border-radius: 25px;
+	border:2px solid #382411;
+}
+
 #classification-list {
   margin: 2%;
 }
