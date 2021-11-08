@@ -34,7 +34,7 @@ async function toggleBoard(toggleMode) {
     if(toggleMode)
     {
       fade(homescreen);
-      await sleep(500);
+      await sleep(300);
       homescreen.classList.toggle("hidden");
       gameboard.classList.toggle("hidden");
       unfade(gameboard);
@@ -43,7 +43,7 @@ async function toggleBoard(toggleMode) {
     else
     {
       fade(gameboard);
-      await sleep(500);
+      await sleep(300);
       gameboard.classList.toggle("hidden");
       document.getElementById("player1Name").innerHTML = "Player 1";
       homescreen.classList.toggle("hidden");
@@ -138,14 +138,14 @@ async function showTutorial()
   if(tutorial.style.opacity == 0)
   {
     unfade(tutorial);
-    await sleep(500);
+    await sleep(300);
     tutorial.classList.toggle("hidden");
     tutorial.style.opacity = 1;
   }
   else
   {
     fade(tutorial);
-    await sleep(500);
+    await sleep(300);
     tutorial.classList.toggle("hidden");
     tutorial.style.opacity = 0;
   }
