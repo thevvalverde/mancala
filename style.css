@@ -350,9 +350,10 @@ input[type='radio']:checked:after
 
 .CloseWindowButton
 {
+  position: absolute;
   background-color: inherit;
   border: 0;
-  margin-left: 90%;
-  margin-top: 2%;
+  margin-left: 92%;
+  margin-top: 1%;
   font-size: 2em;
 }
