@@ -356,6 +356,7 @@ input[type='radio']:checked:after
   box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
   background-color: #CFB784;
   opacity: 0;
+  box-shadow: 0px 0px 1px 100vmax rgba(0,0,0,0.5);
 }
 
 .popup-window h2 {

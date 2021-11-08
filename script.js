@@ -167,7 +167,7 @@ async function displayClassification() {
     }
 
     unfade(topBoard);
-    await sleep(500);
+    await sleep(300);
     topBoard.classList.toggle("hidden");
     topBoard.style.opacity = 1;
 
@@ -179,7 +179,7 @@ async function closeClassification() {
     list.innerHTML = '';
 
     fade(topBoard);
-    await sleep(500);
+    await sleep(300);
     topBoard.classList.toggle("hidden");
     topBoard.style.opacity = 0;
     topBoard.classList.add("hidden");
