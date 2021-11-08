@@ -151,6 +151,13 @@
           </div>
         </td>
       </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="button" id="button-classification" name="classification" value="classification" class="my-button" style="position: sticky;" onclick="displayClassification()">
+        </td>
+        <td></td>
+      </tr>
     </table>
     <table class="tabuleiro">
       <tr>
@@ -202,6 +209,12 @@
   </div>
   <!--DIV TUTORIAL-->
 
+  <div class="popup popup-window hidden" id="classification-board">
+    <input class="CloseWindowButton" type="button" value="X" onclick="closeClassification()">
+    <h2>Top 10 scores</h2>
+    <ol id="classification-list">
+    </ol>
+  </div>
   <script src="script.js"></script>
 </body>
 

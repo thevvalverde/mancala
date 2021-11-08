@@ -150,3 +150,38 @@ async function showTutorial()
     tutorial.style.opacity = 0;
   }
 }
+var classification = [10, 12];
+
+async function displayClassification() {
+    let topBoard = document.getElementById("classification-board");
+    let list = document.getElementById("classification-list");
+
+    for(i = 0; i < 10; i++) {
+        let item = document.createElement('li');
+        if(classification[i]!==undefined) {
+            item.appendChild(document.createTextNode(classification[i] + ' points'));
+        } else {
+            item.appendChild(document.createTextNode('--------'));
+        }
+        list.appendChild(item);
+    }
+
+    unfade(topBoard);
+    await sleep(500);
+    topBoard.classList.toggle("hidden");
+    topBoard.style.opacity = 1;
+
+}
+
+async function closeClassification() {
+    let topBoard = document.getElementById("classification-board");
+    let list = document.getElementById("classification-list");
+    list.innerHTML = '';
+
+    fade(topBoard);
+    await sleep(500);
+    topBoard.classList.toggle("hidden");
+    topBoard.style.opacity = 0;
+    topBoard.classList.add("hidden");
+
+}
