@@ -20,38 +20,52 @@
       <table class="table-options" style="font-size:18px">
         <tr class="tr-table-options">
           <td class="td-table-options">
-            <table>
+            <table class="table-options">
               <tr>
-                <th class="td-table-options">
+                <th>
                   Jogador 1
+                </th>
+                <td>
+                  <input class="rounded-input" type="text" id="player1Input" name="player-name" maxlength="20" style="text-align:center" placeholder="Nome">
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <input class="rounded-input" type="text" id="player1InputPass" name="player-pass" style="text-align:center" placeholder="Password">
+                </td>
+              </tr>
+            <tr>
+              <td><hr style="border: 1px solid #634b30;"></td>
+              <td><hr style="border: 1px solid #634b30;"></td>
             </tr>
             <tr>
-              <td class="td-player-name">
-                <input class="rounded-input" type="text" id="player1Input" name="player-name" maxlength="20" style="text-align:center">
-              </td>
-            </tr>
-            <tr>
-              <th class="td-table-options">
+              <th>
                 Jogador 2
-            </tr>
-            <tr>
-              <td class="td-player-name">
-                <input class="rounded-input" type="text" id="player2Input" name="player-name" maxlength="20" style="text-align:center">
+              </th>
+              <td>
+                <input class="rounded-input" type="text" id="player2Input" name="player-name" maxlength="20" style="text-align:center" placeholder="Nome">
               </td>
             </tr>
-            <tr class="hidden pc-options">
-              <td class="td-table-options">
-                <b>Dificuldade</b>
-                <input class="rounded-input rounded-input-number" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
+            <tr>
+              <td></td>
+              <td>
+                <input class="rounded-input" type="text" id="player2InputPass" name="player-pass" style="text-align:center" placeholder="Password">
+              </td>
             </tr>
           </table>
           </td>
       <td class="td-table-options">
         <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame()">
-        <br>
-        <br>
+        <br class="hidden pc-options">
+        <br class="hidden pc-options">
         <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button">
+        <br class="hidden pc-options">
+        <br class="hidden pc-options">
+        <b class="hidden pc-options">Dificuldade</b>
+        <input class="hidden pc-options rounded-input rounded-input-number" type="number" name="difficulty-number" id="difnum" min="1" max="5" value="1">
       </td>
+
       <td class="td-table-options">
         <table>
           <tr>
@@ -71,7 +85,7 @@
           </tr>
           <tr>
             <td class="td-table-options">
-              <h3>Número incial de sementes:</h3>
+              <h3>Número incial de sementes (por cavidade):</h3>
             </td>
             <td class="td-table-options">
               <input class="rounded-input rounded-input-number" type="number" name="seeds-number" id="seednum" min="3" max="6" value="4">
