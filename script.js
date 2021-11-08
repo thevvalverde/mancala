@@ -130,3 +130,23 @@ function quitGame() {
         child = lowerRow.lastElementChild;
     }
 }
+
+async function showTutorial()
+{
+  let tutorial = document.getElementById("tutorialWindow");
+
+  if(tutorial.style.opacity == 0)
+  {
+    unfade(tutorial);
+    await sleep(500);
+    tutorial.classList.toggle("hidden");
+    tutorial.style.opacity = 1;
+  }
+  else
+  {
+    fade(tutorial);
+    await sleep(500);
+    tutorial.classList.toggle("hidden");
+    tutorial.style.opacity = 0;
+  }
+}

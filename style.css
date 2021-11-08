@@ -328,3 +328,30 @@ input[type='radio']:checked:after
 	font-weight:bold;
 	padding:12px 44px;
 }
+
+.popup
+{
+  position:absolute;
+  top:20%;
+  left:20%;
+  width:60%;  /* adjust as per your needs */
+  height:auto;   /* adjust as per your needs */
+}
+
+.tutorialWindow
+{
+  border: 2px solid black;
+  border-radius: 45px;
+  box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
+  background-color: #CFB784;
+  opacity: 0;
+}
+
+.CloseWindowButton
+{
+  background-color: inherit;
+  border: 0;
+  margin-left: 90%;
+  margin-top: 2%;
+  font-size: 2em;
+}

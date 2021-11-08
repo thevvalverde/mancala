@@ -143,7 +143,7 @@
           </div>
         </td>
         <td class="tdTabuleiro">
-        <input type="button" id="buttonTutorial" name="Tutorial" value="Tutorial" class="my-button" style="position: sticky;" onclick="">
+        <input type="button" id="buttonTutorial" name="Tutorial" value="Tutorial" class="my-button" style="position: sticky;" onclick="showTutorial()">
         </td>
         <td class="tdTabuleiro">
           <div id="player2Score" class="playerNameBox" style="margin-right: 12%; margin-left:55%;">
@@ -169,6 +169,39 @@
       </tr>
     </table>
   </div>
+
+  <!--DIV TUTORIAL-->
+  <div id="tutorialWindow" class="popup tutorialWindow hidden">
+    <input type="button" id="CloseTutorial" name="CloseWindow" value="X" class="CloseWindowButton" onclick="showTutorial()">
+    <table class="intructions">
+      <tr>
+        <th class="td-tutorial">Regras Gerais</th>
+        <th class="td-tutorial">Mover Peças</th>
+      </tr>
+      <tr>
+        <td class="td-tutorial">
+          O jogo passa-se num tabuleiro com várias cavidades e cada uma contém um certo número de sementes. O objectivo do jogo é conseguir mais pontos que o adversário, movendo sementes para a própria área ou capturando as sementes do adversário.
+        </td>
+        <td class="td-tutorial">
+          O jogador, na sua vez, clica num buraco (da fila mais perto de si) que tenha pelo menos uma semente. Esta acção retirará todas as sementes do buraco selecionado e coloca-as, uma a uma, nos buracos seguintes, no sentido contrário ao dos ponteiros do relógio. A área do próprio jogador é também usada nesta separação de sementes e, quando uma semente é lá colocada, o jogador ganha um ponto. O jogador não pode colocar sementes na área do jogador adversário. Se a última semente (da jogada actual) for colocada na própria área, o jogador continua a seleccionar outro buraco não vazio.
+        </td>
+      </tr>
+      <tr>
+        <th class="td-tutorial">Capturar Peças</th>
+        <th class="td-tutorial">Como Terminar o Jogo?</th>
+      </tr>
+      <tr>
+        <td class="td-tutorial">
+          Se a última semente (da jogada actual) for colocada num buraco vazio (no lado do jogador), todas as sementes da mesma coluna, na linha adversária são capturadas e colocadas na área do jogador que fez a jogada.
+        </td>
+        <td class="td-tutorial">
+          O jogo termina quando um dos jogadores não puder fazer a sua jogada - por não haver sementes na sua fila. Quando isso ocorre, todas as sementes que sobram são adicionadas à pontuação do adversário. O jogador com a maior pontuação ganha o jogo.
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!--DIV TUTORIAL-->
+
   <script src="script.js"></script>
 </body>
 
