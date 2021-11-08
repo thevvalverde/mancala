@@ -56,10 +56,10 @@
           </table>
           </td>
       <td class="td-table-options">
-        <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame()">
+        <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame(true)">
         <br class="hidden pc-options">
         <br class="hidden pc-options">
-        <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button">
+        <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button" onclick="startGame(false)">
         <br class="hidden pc-options">
         <br class="hidden pc-options">
         <b class="hidden pc-options">Dificuldade</b>
@@ -166,11 +166,15 @@
         </td>
       </tr>
       <tr>
-        <td></td>
+        <td>
+          <p class="player-status" id="player-one-status" style="margin-left: 12%; margin-right:55%;">Status: Playing</p>
+        </td>
         <td>
           <input type="button" id="button-classification" name="classification" value="classification" class="my-button" style="position: sticky;" onclick="displayClassification()">
         </td>
-        <td></td>
+        <td>
+          <p class="player-status" id="player-two-status" style="margin-right: 12%; margin-left:55%;">Status: Waiting</p>
+        </td>
       </tr>
     </table>
     <table class="tabuleiro">
@@ -223,12 +227,15 @@
   </div>
   <!--DIV TUTORIAL-->
 
+
+  <!--DIV CLASSIFICATION-->
   <div class="popup popup-window hidden" id="classification-board">
     <input class="CloseWindowButton" type="button" value="X" onclick="closeClassification()">
     <h2>Top 10 scores</h2>
     <ol id="classification-list">
     </ol>
   </div>
+  <!--DIV CLASSIFICATION-->
   <script src="script.js"></script>
 </body>
 
