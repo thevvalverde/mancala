@@ -13,6 +13,7 @@ function display() {
         }
         document.getElementById("player2Input").value = "AI Player";
         document.getElementById("player2Input").readOnly = true;
+        document.getElementById("player2InputPass").setAttribute("disabled", true);
     }
     else
     {
@@ -22,6 +23,7 @@ function display() {
         document.getElementById("player2Input").value = "";
         document.getElementById("player2Input").readOnly = false;
         document.getElementById("player2Name").innerHTML = "Player 2";
+        document.getElementById("player2InputPass").removeAttribute("disabled");
     }
 
 }
