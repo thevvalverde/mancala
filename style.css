@@ -26,6 +26,7 @@ h1
 
 hr {
   margin: 0.5%;
+  border: 1px solid #634b30;
 }
 
 table {
@@ -240,6 +241,7 @@ input[type='radio']:checked:after
   border: 2px solid black;
   border-radius: 25px;
   font-size: 18px;
+  text-align: center;
 }
 
 .rounded-input-number
@@ -313,13 +315,13 @@ input[type='radio']:checked:after
   width: 100%;
 }
 
-.tdTabuleiro
+.table-board
 {
   width: 33.3%;
   padding-bottom: 1em;
 }
 
-.playerNameBox
+.player-name-box
 {
   box-shadow: 0px 1px 0px 3px #291816;
 	background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
@@ -341,7 +343,7 @@ input[type='radio']:checked:after
   height:auto;   /* adjust as per your needs */
 }
 
-.tutorialWindow
+.tutorial-window
 {
   border: 2px solid black;
   border-radius: 45px;
@@ -370,7 +372,7 @@ input[type='radio']:checked:after
   font-size: 1rem;
 }
 
-.CloseWindowButton
+.close-window-button
 {
   position: absolute;
   background-color: inherit;

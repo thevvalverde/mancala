@@ -29,19 +29,19 @@ function display() {
         for(i = 0; i < options.length; i++){
             options[i].classList.remove("hidden");
         }
-        document.getElementById("player2Input").value = "AI Player";
-        document.getElementById("player2Input").readOnly = true;
-        document.getElementById("player2InputPass").setAttribute("disabled", true);
+        document.getElementById("p2-input").value = "AI Player";
+        document.getElementById("p2-input").readOnly = true;
+        document.getElementById("p2-input-pass").setAttribute("disabled", true);
     }
     else
     {
         for(i = 0; i < options.length; i++){
             options[i].classList.add("hidden");
         }
-        document.getElementById("player2Input").value = "";
-        document.getElementById("player2Input").readOnly = false;
-        document.getElementById("player2Name").innerHTML = "Player 2";
-        document.getElementById("player2InputPass").removeAttribute("disabled");
+        document.getElementById("p2-input").value = "";
+        document.getElementById("p2-input").readOnly = false;
+        document.getElementById("p2-name").innerHTML = "Player 2";
+        document.getElementById("p2-input-pass").removeAttribute("disabled");
     }
 
 }
@@ -65,7 +65,7 @@ async function toggleBoard(toggleMode) {
       fade(gameboard);
       await sleep(300);
       gameboard.classList.toggle("hidden");
-      document.getElementById("player1Name").innerHTML = "Player 1";
+      document.getElementById("p1-name").innerHTML = "Player 1";
       homescreen.classList.toggle("hidden");
       unfade(homescreen);
     }
@@ -107,8 +107,8 @@ function startGame(playerStart) {
 
     let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
     let seedNumber   = parseInt(document.getElementById("seednum").value);
-    let player1 = document.getElementById("player1Input").value;
-    let player2 = document.getElementById("player2Input").value;
+    let player1 = document.getElementById("p1-input").value;
+    let player2 = document.getElementById("p2-input").value;
 
     let upperRow = document.getElementById("upper-row");
     let lowerRow = document.getElementById("lower-row");
@@ -126,11 +126,11 @@ function startGame(playerStart) {
 
     if(player1 != "")
     {
-      document.getElementById("player1Name").innerHTML = player1;
+      document.getElementById("p1-name").innerHTML = player1;
     }
     if(player2 != "")
     {
-      document.getElementById("player2Name").innerHTML = player2;
+      document.getElementById("p2-name").innerHTML = player2;
     }
 }
 
@@ -156,7 +156,7 @@ function quitGame() {
 
 async function showTutorial()
 {
-  let tutorial = document.getElementById("tutorialWindow");
+  let tutorial = document.getElementById("tutorial-window");
 
   if(tutorial.style.opacity == 0)
   {
