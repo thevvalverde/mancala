@@ -170,6 +170,7 @@ input[type='radio']:checked:after
 
 .table-options
 {
+  font-size: 18px;
   padding: 5px;
   text-align: center;
   width: 100%;
@@ -256,7 +257,6 @@ input[type='radio']:checked:after
   display: flex;
   flex-direction: row;
   height: 400px;
-  margin: 0% 3%;
 }
 
 .container {
@@ -309,6 +309,7 @@ input[type='radio']:checked:after
 
 .tabuleiro
 {
+  position: relative;
   text-align: center;
   align-items: center;
   height: auto;
@@ -360,6 +361,7 @@ input[type='radio']:checked:after
   background-color: #CFB784;
   opacity: 0;
   box-shadow: 0px 0px 1px 100vmax rgba(0,0,0,0.5);
+  padding: 2%;
 }
 
 .popup-window h2 {
@@ -377,7 +379,7 @@ input[type='radio']:checked:after
   position: absolute;
   background-color: inherit;
   border: 0;
-  margin-left: 92%;
+  margin-left: 90%;
   margin-top: 1%;
   font-size: 2em;
 }
@@ -394,6 +396,27 @@ input[type='radio']:checked:after
 	border:2px solid #382411;
 }
 
+.player-score {
+  width: 40%;
+}
+
+.left-box {
+  float: left;
+}
+
+.right-box {
+  float: right;
+}
+
+.sticky-button {
+  position: sticky;
+}
+
 #classification-list {
   margin: 2%;
+}
+
+#div-gameboard {
+  opacity: 0;
+  padding: 0 4%;
 }

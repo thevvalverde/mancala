@@ -23,7 +23,7 @@
 
     <!--------- Game Options --------->
     <form>
-      <table class="table-options" style="font-size:18px">
+      <table class="table-options">
         <tr class="tr-table-options">
 
           <!--------- Player Identification --------->
@@ -83,10 +83,10 @@
 
           <!--------- Game Start --------->
           <td class="td-table-options">
-            <input type="button" id="start" name="Start" value="Start" class="my-button" onclick="startGame(true)">
+            <input type="button" id="start" name="Start" value="Start" class="my-button">
             <br class="hidden pc-options">
             <br class="hidden pc-options">
-            <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button" onclick="startGame(false)">
+            <input type="button" id="pc-start" name="PCStart" value="Let PC Start" class="pc-options hidden my-button">
             <br class="hidden pc-options">
             <br class="hidden pc-options">
             <b class="hidden pc-options">Dificuldade</b>
@@ -128,7 +128,7 @@
                   <h3>Jogar contra PC?</h3>
                 </td>
                 <td class="td-table-options">
-                  <input type="checkbox" class="switch" id="pc-checkbox" onclick="display()">
+                  <input type="checkbox" class="switch" id="pc-checkbox">
                 </td>
               </tr>
 
@@ -180,73 +180,86 @@
   </div>
   <!--------- Main Screen --------->
 
-  <!--------- Game Board --------->
-  <div class="hidden" id="div-gameboard" style="opacity: 0">
+  <!--------- Game Screen --------->
+  <div class="hidden" id="div-gameboard">
     <table class="tabuleiro">
+
       <tr>
+
         <td class="table-board">
-          <div id="p1-name" class="player-name-box" style="margin-left: 12%; margin-right:22%;">
+          <div id="p1-name" class="player-name-box">
             Player 1
           </div>
         </td>
+
         <td class="table-board">
-          <input type="button" id="Quit" name="Quit" value="Desistir" class="my-button" style="position: sticky;" onclick="quitGame()">
+          <input type="button" id="quit" name="quit" value="Desistir" class="my-button sticky-button">
         </td>
+
         <td class="table-board">
-          <div id="p2-name" class="player-name-box" style="margin-right: 12%; margin-left:22%;">
+          <div id="p2-name" class="player-name-box">
             Player 2
           </div>
         </td>
+
       </tr>
+
       <tr>
+
         <td class="table-board">
-          <div id="player1Score" class="player-name-box" style="margin-left: 12%; margin-right:55%;">
+          <div id="p1-score" class="player-name-box player-score left-box">
             Score: 0
           </div>
         </td>
+
         <td class="table-board">
-          <input type="button" id="buttonTutorial" name="Tutorial" value="Tutorial" class="my-button" style="position: sticky;" onclick="showTutorial()">
+          <input type="button" id="button-tutorial" name="tutorial" value="Tutorial" class="my-button sticky-button">
         </td>
+
         <td class="table-board">
-          <div id="player2Score" class="player-name-box" style="margin-right: 12%; margin-left:55%;">
+          <div id="p2-score" class="player-name-box player-score right-box">
             Score: 0
           </div>
         </td>
+
       </tr>
+
       <tr>
         <td>
-          <p class="player-status" id="player-one-status" style="margin-left: 12%; margin-right:55%;">Status: Playing</p>
+          <p class="player-status left-box" id="player-one-status"></p>
         </td>
+
         <td>
-          <input type="button" id="button-classification" name="classification" value="classification" class="my-button" style="position: sticky;" onclick="displayClassification()">
+          <input type="button" id="button-classification" name="classification" value="Classification" class="my-button sticky-button">
         </td>
+
         <td>
-          <p class="player-status" id="player-two-status" style="margin-right: 12%; margin-left:55%;">Status: Waiting</p>
+          <p class="player-status right-box" id="player-two-status"></p>
         </td>
+
       </tr>
+
     </table>
-    <table class="tabuleiro">
-      <tr>
-        <td nowrap="nowrap">
-          <div class="game-board">
-            <div class="container left-container"></div>
-            <div class="hole-container">
-              <div class="row" id="upper-row">
-              </div>
-              <div class="row" id="lower-row">
-              </div>
-            </div>
-            <div class="container right-container"></div>
-          </div>
-        </td>
-      </tr>
-    </table>
+
+    <!--------- Game Board --------->
+    <div class="tabuleiro">
+      <div class="game-board">
+        <div class="container left-container"></div>
+        <div class="hole-container">
+          <div class="row" id="upper-row"></div>
+          <div class="row" id="lower-row"></div>
+        </div>
+        <div class="container right-container"></div>
+      </div>
+    </div>
+    <!--------- Game Board --------->
+
   </div>
-  <!--------- Game Board --------->
+  <!--------- Game Screen --------->
 
   <!--------- Tutorial --------->
   <div id="tutorial-window" class="popup tutorial-window hidden">
-    <input type="button" id="close-tutorial" name="CloseWindow" value="X" class="close-window-button" onclick="showTutorial()">
+    <input type="button" id="close-tutorial" name="CloseWindow" value="X" class="close-window-button">
     <table class="intructions">
 
       <tr>
@@ -284,7 +297,7 @@
 
   <!--------- Classifications --------->
   <div class="popup popup-window hidden" id="classification-board">
-    <input class="close-window-button" type="button" value="X" onclick="closeClassification()">
+    <input id="close-classification" class="close-window-button" type="button" value="X">
     <h2>Top 10 scores</h2>
     <ol id="classification-list">
     </ol>
