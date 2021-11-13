@@ -1,3 +1,17 @@
+
+const $ = (selector) => document.getElementById(selector);
+
+//        Click listeners
+$("button-tutorial").addEventListener('click', showTutorial);
+$("close-tutorial").addEventListener('click', showTutorial);
+$("button-classification").addEventListener('click', displayClassification);
+$("close-classification").addEventListener('click', closeClassification);
+$("start").addEventListener('click', ()=>{startGame(true)});
+$("pc-start").addEventListener('click', ()=>{startGame(false)});
+$("pc-checkbox").addEventListener('change', display);
+$("quit").addEventListener('click', quitGame);
+
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -5,8 +19,8 @@ function sleep(ms) {
 let playerOneTurn = true;
 
 function updateStatus() {
-    let statusOne = document.getElementById("player-one-status");
-    let statusTwo = document.getElementById("player-two-status");
+    let statusOne = $("player-one-status");
+    let statusTwo = $("player-two-status");
 
     if(playerOneTurn) {
         statusOne.innerHTML = 'Status: Playing';
@@ -18,7 +32,7 @@ function updateStatus() {
 }
 
 function display() {
-    let checkbox = document.getElementById("pc-checkbox");
+    let checkbox = $("pc-checkbox");
     let options = document.getElementsByClassName("pc-options");
 
 
@@ -29,26 +43,26 @@ function display() {
         for(i = 0; i < options.length; i++){
             options[i].classList.remove("hidden");
         }
-        document.getElementById("p2-input").value = "AI Player";
-        document.getElementById("p2-input").readOnly = true;
-        document.getElementById("p2-input-pass").setAttribute("disabled", true);
+        $("p2-input").value = "AI Player";
+        $("p2-input").readOnly = true;
+        $("p2-input-pass").setAttribute("disabled", true);
     }
     else
     {
         for(i = 0; i < options.length; i++){
             options[i].classList.add("hidden");
         }
-        document.getElementById("p2-input").value = "";
-        document.getElementById("p2-input").readOnly = false;
-        document.getElementById("p2-name").innerHTML = "Player 2";
-        document.getElementById("p2-input-pass").removeAttribute("disabled");
+        $("p2-input").value = "";
+        $("p2-input").readOnly = false;
+        $("p2-name").innerHTML = "Player 2";
+        $("p2-input-pass").removeAttribute("disabled");
     }
 
 }
 
 async function toggleBoard(toggleMode) {
-    let homescreen = document.getElementById("div-homescreen");
-    let gameboard  = document.getElementById("div-gameboard");
+    let homescreen = $("div-homescreen");
+    let gameboard  = $("div-gameboard");
 
 
     if(toggleMode)
@@ -65,7 +79,7 @@ async function toggleBoard(toggleMode) {
       fade(gameboard);
       await sleep(300);
       gameboard.classList.toggle("hidden");
-      document.getElementById("p1-name").innerHTML = "Player 1";
+      $("p1-name").innerHTML = "Player 1";
       homescreen.classList.toggle("hidden");
       unfade(homescreen);
     }
@@ -106,12 +120,12 @@ function startGame(playerStart) {
     updateStatus();
 
     let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
-    let seedNumber   = parseInt(document.getElementById("seednum").value);
-    let player1 = document.getElementById("p1-input").value;
-    let player2 = document.getElementById("p2-input").value;
+    let seedNumber   = parseInt($("seednum").value);
+    let player1 = $("p1-input").value;
+    let player2 = $("p2-input").value;
 
-    let upperRow = document.getElementById("upper-row");
-    let lowerRow = document.getElementById("lower-row");
+    let upperRow = $("upper-row");
+    let lowerRow = $("lower-row");
 
     for(let i = 0; i < cavityNumber; i++) {
         let newHole = document.createElement('div');
@@ -126,11 +140,11 @@ function startGame(playerStart) {
 
     if(player1 != "")
     {
-      document.getElementById("p1-name").innerHTML = player1;
+      $("p1-name").innerHTML = player1;
     }
     if(player2 != "")
     {
-      document.getElementById("p2-name").innerHTML = player2;
+      $("p2-name").innerHTML = player2;
     }
 }
 
@@ -139,14 +153,14 @@ function quitGame() {
     var toggleMode = false;
     toggleBoard(toggleMode);
 
-    let upperRow = document.getElementById("upper-row");
+    let upperRow = $("upper-row");
     let child = upperRow.lastElementChild;
     while(child) {
         upperRow.removeChild(child);
         child = upperRow.lastElementChild;
     }
 
-    let lowerRow = document.getElementById("lower-row");
+    let lowerRow = $("lower-row");
     child = lowerRow.lastElementChild;
     while(child) {
         lowerRow.removeChild(child);
@@ -156,7 +170,7 @@ function quitGame() {
 
 async function showTutorial()
 {
-  let tutorial = document.getElementById("tutorial-window");
+  let tutorial = $("tutorial-window");
 
   if(tutorial.style.opacity == 0)
   {
@@ -176,8 +190,8 @@ async function showTutorial()
 var classification = [10, 12];
 
 async function displayClassification() {
-    let topBoard = document.getElementById("classification-board");
-    let list = document.getElementById("classification-list");
+    let topBoard = $("classification-board");
+    let list     = $("classification-list");
 
     for(i = 0; i < 10; i++) {
         let item = document.createElement('li');
@@ -197,9 +211,8 @@ async function displayClassification() {
 }
 
 async function closeClassification() {
-    let topBoard = document.getElementById("classification-board");
-    let list = document.getElementById("classification-list");
-    list.innerHTML = '';
+    let topBoard = $("classification-board");
+    let list     = $("classification-list");
 
     fade(topBoard);
     await sleep(300);
@@ -207,4 +220,6 @@ async function closeClassification() {
     topBoard.style.opacity = 0;
     topBoard.classList.add("hidden");
 
+
+    list.innerHTML = '';
 }
