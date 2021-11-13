@@ -1,13 +1,13 @@
-html
-{
+/* ---------- General Elements ----------- */
+
+html {
   margin: 0;
   padding: 0;
   border: 0;
   min-height: 100%;
 }
 
-body
-{
+body {
   padding: 1%;
   background-color: #EADEB8;
   background-image: url('woodbackground.jpeg');
@@ -18,10 +18,9 @@ body
   font-family: sans-serif, 'Times New Roman', 'Georgia', 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', serif;
 }
 
-h1
-{
-    font-size: 1.8vw;
-    letter-spacing: 0.4vw;
+h1 {
+  font-size: 1.8vw;
+  letter-spacing: 0.4vw;
 }
 
 hr {
@@ -30,38 +29,36 @@ hr {
 }
 
 table {
-    padding: 1%;
+  padding: 1%;
 }
 
 td {
-    text-align: center;
+  text-align: center;
 }
 
 input[type=number] {
-    background-color: aliceblue;
-    border: 2px solid black;
-    width: 48px;
-    height: 22px;
-    padding: 0;
-    text-align: center;
+  background-color: aliceblue;
+  border: 2px solid black;
+  width: 48px;
+  height: 22px;
+  padding: 0;
+  text-align: center;
 }
 
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
-    opacity: 1;
+  opacity: 1;
 }
 
-input[type='radio']
-{
-    top: 18px;
-    left: 18px;
-    width: 18px;
-    height: 18px;
-    padding: 0;
+input[type='radio'] {
+  top: 18px;
+  left: 18px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
 }
 
-input[type='radio']:after
-{
+input[type='radio']:after {
   border: 2px solid black;
   width: 15px;
   height: 15px;
@@ -74,64 +71,138 @@ input[type='radio']:after
   content: ""
 }
 
-input[type='radio']:checked:after
-{
-        width: 15px;
-        height: 15px;
-        border-radius: 15px;
-        top: 0;
-        left: 0;
-        position: relative;
-        background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
-        content: '';
-        display: inline-block;
-        visibility: visible;
-        border: 2px solid black;
-    }
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  position: relative;
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid black;
+}
 
 .hidden {
-    display: none;
+  display: none;
+}
+
+.inline-title {
+  display: inline;
+  height: 100%;
+}
+
+/* ----------------------- */
+
+/* ---------- Inputs and Buttons ----------- */
+
+.rounded-input {
+  border: 2px solid black;
+  border-radius: 25px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.rounded-input-number {
+  border-radius: 20px;
+}
+
+.sticky-button {
+  position: sticky;
 }
 
 .switch {
-    margin: 0;
-    border: 2px solid black;
-    background-color: aliceblue;
-    border-radius: 50%;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
-    display: inline-block;
-    position: relative;
-    appearance: none;
-    height: 28px;
-    width: 28px;
+  margin: 0;
+  border: 2px solid black;
+  background-color: aliceblue;
+  border-radius: 50%;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
+  display: inline-block;
+  position: relative;
+  appearance: none;
+  height: 28px;
+  width: 28px;
 }
 
 .switch:checked {
-    background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
 }
 
 .switch:active,
 .switch:checked:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .switch:checked:after {
-    content: '\2714';
-    font-size: 20px;
-    bottom: 0;
-    left: 10%;
-    position: absolute;
-    text-align: center;
-    color: aliceblue;
+  content: '\2714';
+  font-size: 20px;
+  bottom: 0;
+  left: 10%;
+  position: absolute;
+  text-align: center;
+  color: aliceblue;
 }
 
-.inline-title {
-    display: inline;
-    height: 100%;
+.my-button {
+  box-shadow: 0px 4px 0px 1px #291816;
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  background-color: #7d5d3b;
+  border-radius: 25px;
+  border: 2px solid #54381e;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 44px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #4d3534;
 }
 
-#div-homescreen
-{
+.my-button:hover {
+  background: linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
+  background-color: #634b30;
+}
+
+.my-button:active {
+  margin-top: 2px;
+  margin-bottom: -2px;
+  box-shadow: 0px 2px 0px 1px #291816;
+}
+
+/* ----------------------- */
+
+/* ---------- Header ----------- */
+
+.header-mancala {
+  margin-top: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 2%;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.div-header {
+  color: white;
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  border: 3px solid black;
+  border-radius: 35px;
+  font-family: sans-serif;
+  text-align: center;
+  margin-left: 38%;
+  margin-right: 38%;
+  box-shadow: 0px 2px 0px 3px #291816;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* ----------------------- */
+
+/* ---------- Main Screen ----------- */
+
+#div-homescreen {
   margin-left: auto;
   margin-right: auto;
   height: 90%;
@@ -143,33 +214,7 @@ input[type='radio']:checked:after
   background-color: #CFB784;
 }
 
-.header-mancala
-{
-  margin-top: 10px;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 2%;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-}
-
-.div-header
-{
-  color: white;
-  background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
-  border: 3px solid black;
-  border-radius: 35px;
-  font-family: sans-serif;
-  text-align: center;
-  margin-left: 38%;
-  margin-right: 38%;
-  box-shadow: 0px 2px 0px 3px #291816;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
-
-.table-options
-{
+.table-options {
   font-size: 18px;
   padding: 5px;
   text-align: center;
@@ -177,95 +222,115 @@ input[type='radio']:checked:after
   border: 0;
 }
 
-.tr-table-options, .td-table-options
-{
+.tr-table-options,
+.td-table-options {
   padding: 0;
   border: 0;
   margin: 5px;
 }
 
-.td-table-options
-{
+.td-table-options {
   width: 33.3%;
   text-align: center;
   margin-left: 1%;
 }
 
-.td-player-name
-{
-  padding: 20px;
-  padding-top: 10px;
-  width: 33.3%;
-  text-align: center;
-}
-
-.td-tutorial
-{
+.td-tutorial {
   text-align: left;
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
-.my-button {
-	box-shadow: 0px 4px 0px 1px #291816;
-	background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
-	background-color:#7d5d3b;
-	border-radius: 25px;
-	border:2px solid #54381e;
-	cursor:pointer;
-	color: white;
-	font-size:18px;
-	font-weight:bold;
-	padding:12px 44px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #4d3534;
-}
-.my-button:hover {
-	background:linear-gradient(to bottom, #634b30 5%, #7d5d3b 100%);
-	background-color:#634b30;
-}
-.my-button:active {
-	margin-top:2px;
-  margin-bottom: -2px;
-  box-shadow: 0px 2px 0px 1px #291816;
-}
-
-.intructions
-{
+.intructions {
   font-family: 'Times New Roman';
   font-size: 18px;
 }
 
-.rounded-input
-{
-  border: 2px solid black;
-  border-radius: 25px;
-  font-size: 18px;
-  text-align: center;
+/* ----------------------- */
+
+/* ---------- Game Screen Info ----------- */
+
+#classification-list {
+  margin: 2%;
 }
 
-.rounded-input-number
-{
-  border-radius: 20px;
+.close-window-button {
+  position: absolute;
+  background-color: inherit;
+  border: 0;
+  margin-left: 90%;
+  margin-top: 1%;
+  font-size: 2em;
+}
+
+.player-status {
+  background: linear-gradient(to bottom, #503b26 5%, #463522 100%);
+  background-color: #553f29;
+  display: inline-block;
+  padding: 2% 5%;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 25px;
+  border: 2px solid #382411;
+}
+
+.player-score {
+  width: 40%;
+}
+
+.left-box {
+  float: left;
+}
+
+.right-box {
+  float: right;
+}
+
+.player-name-box {
+  box-shadow: 0px 1px 0px 3px #291816;
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  background-color: #7d5d3b;
+  border-radius: 25px;
+  border: 2px solid #54381e;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px 44px;
+}
+
+/* ----------------------- */
+
+/* ---------- Game Screen Board ----------- */
+
+#div-gameboard {
+  opacity: 0;
+  padding: 0 4%;
+}
+
+#upper-row .hole {
+  border: 1px solid rgb(214, 19, 19);
+}
+
+#lower-row .hole {
+  border: 1px solid rgb(14, 14, 248);
 }
 
 .game-board {
-  background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
+  background: linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
   border-radius: 20px;
-	border:2px solid #130b03;
+  border: 2px solid #130b03;
   display: flex;
   flex-direction: row;
   height: 400px;
 }
 
 .container {
-  background:linear-gradient(to bottom, #291a0b 5%, #361f04 100%);
+  background: linear-gradient(to bottom, #291a0b 5%, #361f04 100%);
   flex: 1;
   border-radius: 20px;
 }
-
-
 
 .left-container {
   border: 1px solid rgb(214, 19, 19);
@@ -290,25 +355,17 @@ input[type='radio']:checked:after
 }
 
 .hole {
-  background:linear-gradient(to bottom, #291a0b 5%, #361f04 100%);
+  background: linear-gradient(to bottom, #291a0b 5%, #361f04 100%);
   border-radius: 20px;
   flex: 1;
 }
 
-#upper-row .hole {
-  border: 1px solid rgb(214, 19, 19);
-}
-
-#lower-row .hole {
-  border: 1px solid rgb(14, 14, 248);
-}
-
-.container, .hole {
+.container,
+.hole {
   margin: 10px;
 }
 
-.tabuleiro
-{
+.board {
   position: relative;
   text-align: center;
   align-items: center;
@@ -316,42 +373,32 @@ input[type='radio']:checked:after
   width: 100%;
 }
 
-.table-board
-{
+.table-board {
   width: 33.3%;
   padding-bottom: 1em;
 }
 
-.player-name-box
-{
-  box-shadow: 0px 1px 0px 3px #291816;
-	background:linear-gradient(to bottom, #7d5d3b 5%, #634b30 100%);
-	background-color:#7d5d3b;
-	border-radius: 25px;
-	border:2px solid #54381e;
-	color: white;
-	font-size:18px;
-	font-weight:bold;
-	padding:12px 44px;
+/* ----------------------- */
+
+/* ---------- Game Screen Popups ----------- */
+
+.popup {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  /* adjust as per your needs */
+  height: auto;
+  /* adjust as per your needs */
 }
 
-.popup
-{
-  position:absolute;
-  top:20%;
-  left:20%;
-  width:60%;  /* adjust as per your needs */
-  height:auto;   /* adjust as per your needs */
-}
-
-.tutorial-window
-{
+.tutorial-window {
   border: 2px solid black;
   border-radius: 45px;
   box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
   background-color: #CFB784;
   opacity: 0;
-  box-shadow: 0px 0px 1px 100vmax rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 1px 100vmax rgba(0, 0, 0, 0.5);
 }
 
 .popup-window {
@@ -360,7 +407,7 @@ input[type='radio']:checked:after
   box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
   background-color: #CFB784;
   opacity: 0;
-  box-shadow: 0px 0px 1px 100vmax rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 1px 100vmax rgba(0, 0, 0, 0.5);
   padding: 2%;
 }
 
@@ -374,49 +421,6 @@ input[type='radio']:checked:after
   font-size: 1rem;
 }
 
-.close-window-button
-{
-  position: absolute;
-  background-color: inherit;
-  border: 0;
-  margin-left: 90%;
-  margin-top: 1%;
-  font-size: 2em;
-}
+/* ---------------------- */
 
-.player-status {
-	background:linear-gradient(to bottom, #503b26 5%, #463522 100%);
-	background-color:#553f29;
-  display: inline-block;
-  padding: 2% 10%;
-	color: white;
-	font-size:18px;
-	font-weight:bold;
-	border-radius: 25px;
-	border:2px solid #382411;
-}
 
-.player-score {
-  width: 40%;
-}
-
-.left-box {
-  float: left;
-}
-
-.right-box {
-  float: right;
-}
-
-.sticky-button {
-  position: sticky;
-}
-
-#classification-list {
-  margin: 2%;
-}
-
-#div-gameboard {
-  opacity: 0;
-  padding: 0 4%;
-}

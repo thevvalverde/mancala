@@ -182,7 +182,7 @@
 
   <!--------- Game Screen --------->
   <div class="hidden" id="div-gameboard">
-    <table class="tabuleiro">
+    <table class="board">
 
       <tr>
 
@@ -225,16 +225,16 @@
       </tr>
 
       <tr>
-        <td>
-          <p class="player-status left-box" id="player-one-status"></p>
+        <td class="table-board">
+          <div class="player-status left-box" id="player-one-status"></div>
         </td>
 
-        <td>
+        <td class="table-board">
           <input type="button" id="button-classification" name="classification" value="Classification" class="my-button sticky-button">
         </td>
 
-        <td>
-          <p class="player-status right-box" id="player-two-status"></p>
+        <td class="table-board">
+          <div class="player-status right-box" id="player-two-status"></div>
         </td>
 
       </tr>
@@ -242,7 +242,7 @@
     </table>
 
     <!--------- Game Board --------->
-    <div class="tabuleiro">
+    <div class="board">
       <div class="game-board">
         <div class="container left-container"></div>
         <div class="hole-container">
@@ -259,7 +259,7 @@
 
   <!--------- Tutorial --------->
   <div id="tutorial-window" class="popup tutorial-window hidden">
-    <input type="button" id="close-tutorial" name="CloseWindow" value="X" class="close-window-button">
+    <input type="button" id="close-tutorial" value="X" class="close-window-button">
     <table class="intructions">
 
       <tr>
