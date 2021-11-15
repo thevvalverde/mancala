@@ -2,6 +2,7 @@
 const $ = (selector) => document.getElementById(selector);
 
 //        Click listeners
+
 $("button-tutorial").addEventListener('click', showTutorial);
 $("close-tutorial").addEventListener('click', showTutorial);
 $("button-classification").addEventListener('click', displayClassification);
@@ -12,8 +13,36 @@ $("pc-checkbox").addEventListener('change', display);
 $("quit").addEventListener('click', quitGame);
 
 
+//      General Animations
+
 function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function fade(element) {
+    var op = 1;
+    var timer = setInterval(function () {
+        if (op <= 0.1){
+            clearInterval(timer);
+            element.style.display = 'none';
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op -= op * 0.1;
+    }, 10);
+}
+
+function unfade(element) {
+    var op = 0.1;
+    element.style.display = 'block';
+    var timer = setInterval(function () {
+        if (op >= 1){
+            clearInterval(timer);
+        }
+        element.style.opacity = op;
+        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+        op += op * 0.1;
+    }, 10);
 }
 
 let playerOneTurn = true;
@@ -84,32 +113,6 @@ async function toggleBoard(toggleMode) {
       unfade(homescreen);
     }
 
-}
-
-function fade(element) {
-    var op = 1;
-    var timer = setInterval(function () {
-        if (op <= 0.1){
-            clearInterval(timer);
-            element.style.display = 'none';
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op -= op * 0.1;
-    }, 10);
-}
-
-function unfade(element) {
-    var op = 0.1;
-    element.style.display = 'block';
-    var timer = setInterval(function () {
-        if (op >= 1){
-            clearInterval(timer);
-        }
-        element.style.opacity = op;
-        element.style.filter = 'alpha(opacity=' + op * 100 + ")";
-        op += op * 0.1;
-    }, 10);
 }
 
 function startGame(playerStart) {
