@@ -384,7 +384,7 @@ input[type='radio']:checked:after {
   position: absolute;
   margin: 10px;
   border-radius: 50%;
-  padding-bottom: 25%;
+  padding-bottom: 15%;
   background: linear-gradient(to bottom, #9b1313 5%, #4e1106 100%);
   border: 2px solid black;
 }
