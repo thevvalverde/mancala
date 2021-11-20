@@ -14,6 +14,10 @@ $("pc-start").addEventListener('click', () => {
 });
 $("pc-checkbox").addEventListener('change', display);
 $("quit").addEventListener('click', quitGame);
+//$("lower-row"),addEventListener('hoverOnLowerRow', false);
+//$("lower-row"),addEventListener('hoverOutLowerRow', false);
+//$("upper-row"),addEventListener('hoverOnUpperRow', false);
+//$("upper-row"),addEventListener('hoverOutUpperRow', false);
 
 //      General Animations
 
@@ -113,17 +117,24 @@ function updateBoard() {
 function updateStatus() {
     let statusOne = $("player-one-status");
     let statusTwo = $("player-two-status");
+    let upperRow = document.getElementById('upper-row');
+    let lowerRow = document.getElementById('lower-row');
 
     if (!playerTwoTurn) {
         if(canPlay(0)) {
             statusOne.innerHTML = 'Status: Playing';
             statusTwo.innerHTML = 'Status: Waiting';
-        } 
+
+            upperRow.setAttribute("style", "background: linear-gradient(to bottom, #7d5d3b 50%, #634b30 100%);")
+            lowerRow.setAttribute("style", "background-color:DarkRed;")
+        }
     } else {
         if(canPlay(1)) {
             statusOne.innerHTML = 'Status: Waiting';
             statusTwo.innerHTML = 'Status: Playing';
-        } 
+            upperRow.setAttribute("style", "background-color:DarkRed;")
+            lowerRow.setAttribute("style", "background: linear-gradient(to bottom, #7d5d3b 50%, #634b30 100%);")
+        }
     }
 
 }

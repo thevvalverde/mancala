@@ -311,10 +311,12 @@ input[type='radio']:checked:after {
 
 #upper-row .hole {
   border: 1px solid rgb(214, 19, 19);
+  background-color: inherit;
 }
 
 #lower-row .hole {
   border: 1px solid rgb(14, 14, 248);
+  background-color: inherit;
 }
 
 #left-container {
@@ -433,5 +435,3 @@ input[type='radio']:checked:after {
 }
 
 /* ---------------------- */
-
-
