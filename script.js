@@ -58,6 +58,7 @@ let gameOver = false;
 let seedArray;
 let classifications = [];
 let n;
+let checkbox = $("pc-checkbox");
 
 // ******************************
 
@@ -114,7 +115,7 @@ function updateBoard() {
 
 }
 
-function updateStatus() {
+async function updateStatus() {
     let statusOne = $("player-one-status");
     let statusTwo = $("player-two-status");
     let upperRow = document.getElementById('upper-row');
@@ -141,6 +142,12 @@ function updateStatus() {
             statusTwo.innerHTML = 'Status: Playing';
             for(let i = 0; i < n; i++) {
                 $('upper-hole-'+i).classList.add('hole-current');
+            }
+            if(checkbox.checked)
+            {
+              await sleep(1000);
+              makeMovePC();
+              console.log("JOGADA DO PC");
             }
         }
     }
@@ -227,6 +234,18 @@ function generateSeeds(id, seedNum) {
     }
 }
 
+function makeMovePC()
+{
+  let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
+  let chosenHole = 0;
+
+  min = Math.ceil(0);
+  max = Math.floor(cavityNumber);
+  chosenHole = Math.floor(Math.random() * (max - min + 1)) + min;
+
+  makeMove(1, chosenHole);
+}
+
 function makeMove(player, id) {
     updateGame();
     if (playerTwoTurn != player || gameOver) {
@@ -271,7 +290,6 @@ function makeMove(player, id) {
 // *****************************
 
 function display() {
-    let checkbox = $("pc-checkbox");
     let options = document.getElementsByClassName("pc-options");
 
     if (checkbox.checked == true) {
@@ -339,9 +357,12 @@ function startGame(playerStart) {
         newHole.id = 'upper-hole-' + i;
         newHole.classList.add('hole');
         upperRow.appendChild(newHole);
-        newHole.addEventListener('click', () => {
+        if(!checkbox.checked)
+        {
+          newHole.addEventListener('click', () => {
             makeMove(1, i)
-        })
+          })
+        }
     }
     for (let i = 0; i < cavityNumber; i++) {
         let newHole = document.createElement('div');
