@@ -152,7 +152,7 @@ function updateClassifications(points) {
     classifications.sort();
     classifications.reverse();
     classifications = classifications.slice(0,10);
-    console.log(classifications);
+    // console.log(classifications);
 }
 
 function canPlay(player) {
@@ -236,7 +236,7 @@ function makeMove(player, id) {
     }
     let pos = player * (n + 1) + id;
     let seeds = seedArray[pos];
-    console.log("position " + pos + " of array = " + seeds);
+    // console.log("position " + pos + " of array = " + seeds);
     seedArray[pos] = 0;
     while (seeds--) {
         pos++;
@@ -248,7 +248,7 @@ function makeMove(player, id) {
             continue;
         }
         seedArray[pos]++;
-        console.log("inserting seed in position " + pos);
+        // console.log("inserting seed in position " + pos);
     }
     let inversePos = -(pos-2*n);
     // console.log("pos: " + pos +", inverse pos: " + inversePos);
@@ -408,7 +408,7 @@ async function showTutorial() {
 }
 
 async function displayClassification() {
-    console.log(classifications);
+    // console.log(classifications);
     let topBoard = $("classification-board");
     let list = $("classification-list");
 
