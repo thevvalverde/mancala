@@ -120,20 +120,28 @@ function updateStatus() {
     let upperRow = document.getElementById('upper-row');
     let lowerRow = document.getElementById('lower-row');
 
+    for(let i = 0; i < n; i++) {
+        $('upper-hole-'+i).classList.remove("hole-current");
+        $('lower-hole-'+i).classList.remove("hole-current");
+    }
+
     if (!playerTwoTurn) {
         if(canPlay(0)) {
             statusOne.innerHTML = 'Status: Playing';
             statusTwo.innerHTML = 'Status: Waiting';
 
-            upperRow.setAttribute("style", "background: linear-gradient(to bottom, #7d5d3b 50%, #634b30 100%);")
-            lowerRow.setAttribute("style", "background-color:DarkRed;")
+            for(let i = 0; i < n; i++) {
+                let hole = $('lower-hole-'+i);
+                hole.classList.add('hole-current');
+            }
         }
     } else {
         if(canPlay(1)) {
             statusOne.innerHTML = 'Status: Waiting';
             statusTwo.innerHTML = 'Status: Playing';
-            upperRow.setAttribute("style", "background-color:DarkRed;")
-            lowerRow.setAttribute("style", "background: linear-gradient(to bottom, #7d5d3b 50%, #634b30 100%);")
+            for(let i = 0; i < n; i++) {
+                $('upper-hole-'+i).classList.add('hole-current');
+            }
         }
     }
 
@@ -228,7 +236,7 @@ function makeMove(player, id) {
     }
     let pos = player * (n + 1) + id;
     let seeds = seedArray[pos];
-    // console.log("position " + pos + " of array = " + seeds);
+    console.log("position " + pos + " of array = " + seeds);
     seedArray[pos] = 0;
     while (seeds--) {
         pos++;
@@ -240,13 +248,14 @@ function makeMove(player, id) {
             continue;
         }
         seedArray[pos]++;
+        console.log("inserting seed in position " + pos);
     }
     let inversePos = -(pos-2*n);
     // console.log("pos: " + pos +", inverse pos: " + inversePos);
     if ((player === 0 && pos != n) || (player === 1 && pos != 2*n+1)) { // Change current player if last pos is not their container
         playerTwoTurn = !playerTwoTurn;
     }
-    if(seedArray[pos]===1 && ((player === 0 && pos < n) || (player === 1 && pos > n))) {
+    if(pos != n && pos != 2*n+1 && seedArray[pos]===1 && ((player === 0 && pos < n) || (player === 1 && pos > n))) {
         let transferingSeeds = seedArray[pos] + seedArray[inversePos];
         seedArray[pos] = 0;
         seedArray[inversePos] = 0;
