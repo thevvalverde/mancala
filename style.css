@@ -23,6 +23,10 @@ h1 {
   letter-spacing: 0.4vw;
 }
 
+h2 {
+  text-align: center;
+}
+
 hr {
   margin: 0.5%;
   border: 1px solid #634b30;
@@ -171,6 +175,14 @@ input[type='radio']:checked:after {
   box-shadow: 0px 2px 0px 1px #291816;
 }
 
+.register-form {
+  text-align: center;
+}
+
+.register-form .rounded-input {
+  margin: 15px 0;
+}
+
 /* ----------------------- */
 
 /* ---------- Header ----------- */
@@ -259,7 +271,7 @@ input[type='radio']:checked:after {
   position: absolute;
   background-color: inherit;
   border: 0;
-  margin-left: 90%;
+  margin-left: 85%;
   margin-top: 1%;
   font-size: 2em;
 }
@@ -405,6 +417,20 @@ input[type='radio']:checked:after {
   /* adjust as per your needs */
   height: auto;
   /* adjust as per your needs */
+}
+
+.register-popup {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  width: 30%;
+  padding-bottom: 2%;
+  border: 2px solid black;
+  border-radius: 45px;
+  box-shadow: 5px 5px 2px 2px rgba(0, 0, 0, 0.05), inset 0 -15px 15px -12px rgba(0, 0, 0, 0.05);
+  background-color: #CFB784;
+  opacity: 0;
+  box-shadow: 0px 0px 1px 100vmax rgba(0, 0, 0, 0.5);
 }
 
 .tutorial-window {

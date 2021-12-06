@@ -36,13 +36,14 @@
                 <th>
                   Jogador 1
                 </th>
+              </tr>
+              
+              <tr>
                 <td>
                   <input class="rounded-input" type="text" id="p1-input" name="player-name" maxlength="20" placeholder="Nome">
                 </td>
               </tr>
-
               <tr>
-                <td></td>
                 <td>
                   <input class="rounded-input" type="password" id="p1-input-pass" name="player-pass" placeholder="Password">
                 </td>
@@ -51,28 +52,22 @@
 
               <tr>
                 <td>
-                  <hr>
+                  <br>
                 </td>
                 <td>
-                  <hr>
+                  <br>
                 </td>
               </tr>
 
               <!--------- Jogador 2 --------->
               <tr>
-                <th>
-                  Jogador 2
-                </th>
                 <td>
-                  <input class="rounded-input" type="text" id="p2-input" name="player-name" maxlength="20" placeholder="Nome">
+                  <input type="button" id="login-button" name="Login" value="Login" class="my-button">
+                  <input type="button" id="register" name="Register" value="Register" class="my-button">
                 </td>
               </tr>
 
               <tr>
-                <td></td>
-                <td>
-                  <input class="rounded-input" type="password" id="p2-input-pass" name="player-pass" placeholder="Password">
-                </td>
               </tr>
               <!--------- Jogador 2 --------->
 
@@ -140,6 +135,26 @@
       </table>
     </form>
     <!--------- Game Options --------->
+
+  <div id="register-screen" class="register-popup hidden">
+    <input type="button" id="close-register" value="X" class="close-window-button">
+
+
+    <!--------- New Account -------------->
+    <h2>New Account</h2>
+    <div class="register-form">
+      <input class="rounded-input" type="text" id="register-nick" name="player-name" maxlength="20" placeholder="Nickname">
+      <br>
+      <input class="rounded-input" type="password" id="register-pass" name="player-name" maxlength="20" placeholder="Password">
+      <br>
+      <input class="rounded-input" type="password" id="register-confpass" name="player-name" maxlength="20" placeholder="Confirm Password">
+      <br>
+      <button type="submit" class="my-button" id="register-button" value="register">Register</button>
+    </div>
+    <!--------- New Account -------------->
+
+  </div>
+
 
     <hr>
 
@@ -305,6 +320,7 @@
   <!--------- Classifications --------->
 
   <script src="script.js"></script>
+  <script src="comms.js"></script>
 </body>
 
 </html>

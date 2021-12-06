@@ -14,6 +14,8 @@ $("pc-start").addEventListener('click', () => {
 });
 $("pc-checkbox").addEventListener('change', display);
 $("quit").addEventListener('click', quitGame);
+$("register").addEventListener('click', displayRegister);
+$("close-register").addEventListener('click', displayRegister);
 //$("lower-row"),addEventListener('hoverOnLowerRow', false);
 //$("lower-row"),addEventListener('hoverOutLowerRow', false);
 //$("upper-row"),addEventListener('hoverOnUpperRow', false);
@@ -289,6 +291,24 @@ function makeMove(player, id) {
 
 // *****************************
 
+async function displayRegister() {
+    console.log("AAAAAAA");
+    let registerScreen = $("register-screen");
+
+    if (registerScreen.style.opacity == 0) {
+        unfade(registerScreen);
+        await sleep(300);
+        registerScreen.classList.toggle("hidden");
+        registerScreen.style.opacity = 1;
+    } else {
+        fade(registerScreen);
+        await sleep(300);
+        registerScreen.classList.toggle("hidden");
+        registerScreen.style.opacity = 0;
+    }
+
+}
+
 function display() {
     let options = document.getElementsByClassName("pc-options");
 
@@ -296,17 +316,17 @@ function display() {
         for (i = 0; i < options.length; i++) {
             options[i].classList.remove("hidden");
         }
-        $("p2-input").value = "AI Player";
-        $("p2-input").readOnly = true;
-        $("p2-input-pass").setAttribute("disabled", true);
+        // $("p2-input").value = "AI Player";
+        // $("p2-input").readOnly = true;
+        // $("p2-input-pass").setAttribute("disabled", true);
     } else {
         for (i = 0; i < options.length; i++) {
             options[i].classList.add("hidden");
         }
-        $("p2-input").value = "";
-        $("p2-input").readOnly = false;
-        $("p2-name").innerHTML = "Player 2";
-        $("p2-input-pass").removeAttribute("disabled");
+        // $("p2-input").value = "";
+        // $("p2-input").readOnly = false;
+        // $("p2-name").innerHTML = "Player 2";
+        // $("p2-input-pass").removeAttribute("disabled");
     }
 
 }
@@ -347,7 +367,8 @@ function startGame(playerStart) {
     let seedNumber = parseInt($("seednum").value);
     $('quit').value = 'Quit';
     let player1 = $("p1-input").value;
-    let player2 = $("p2-input").value;
+    // let player2 = $("p2-input").value;
+    let player2 = "Player 2";
 
     let upperRow = $("upper-row");
     let lowerRow = $("lower-row");
