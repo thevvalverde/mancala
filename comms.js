@@ -1,29 +1,18 @@
-$("register-button").addEventListener('click', getData);
 $("login-button").addEventListener('click', getData);
 
 var base = "http://twserver.alunos.dcc.fc.up.pt:8008/"
 
 function getData() {
     let nick, pass, confirmpass;
-    if(this.value==="register") {
-        nick = $("register-nick").value;
-        pass = $("register-pass").value;
-        confirmpass = $("register-confpass").value;
-        if(nick===""){
-            alert("Nickname cannot be empty!");
-            return;
-        }
-        if(pass === "") {
-            alert("Type in a password!");
-            return;
-        }
-        if(pass !== confirmpass) {
-            alert("Passwords do not match!");
-            return;
-        }
-    } else {
-        nick = $("p1-input").value;
-        pass = $("p1-input-pass").value;
+    nick = $("p1-input").value;
+    pass = $("p1-input-pass").value;
+    if(nick===""){
+        alert("Nickname cannot be empty!");
+        return;
+    }
+    if(pass === "") {
+        alert("Type in a password!");
+        return;
     }
     register(nick, pass);
 }

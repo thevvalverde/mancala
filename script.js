@@ -14,8 +14,6 @@ $("pc-start").addEventListener('click', () => {
 });
 $("pc-checkbox").addEventListener('change', display);
 $("quit").addEventListener('click', quitGame);
-$("register").addEventListener('click', displayRegister);
-$("close-register").addEventListener('click', displayRegister);
 //$("lower-row"),addEventListener('hoverOnLowerRow', false);
 //$("lower-row"),addEventListener('hoverOutLowerRow', false);
 //$("upper-row"),addEventListener('hoverOnUpperRow', false);
