@@ -1,22 +1,6 @@
 const $ = (selector) => document.getElementById(selector);
 
-//        Click listeners
 
-$("button-tutorial").addEventListener('click', showTutorial);
-$("close-tutorial").addEventListener('click', showTutorial);
-$("button-classification").addEventListener('click', displayClassification);
-$("close-classification").addEventListener('click', closeClassification);
-$("start").addEventListener('click', () => {
-    startGame(false)
-});
-$("pc-start").addEventListener('click', () => {
-    startGame(true)
-});
-$("pc-checkbox").addEventListener('change', ()=> {
-    pcGame = checkbox.checked;
-    display();
-});
-$("quit").addEventListener('click', quitGame);
 
 // GLOBAL VARIABLES ***************
 
@@ -37,10 +21,43 @@ let classifications = [];                   // List of Top Scores
 
 let nickOne = "Jogador 1";         
 let nickTwo = "Jogador 2";
+let computerName = "Computer";
 let playerTwoTurn = false;
 
 let logged = false;
 let gameOver = false;
+
+//        Click listeners
+var radios = document.getElementsByClassName("size-radio");
+for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', function() {
+            size = parseInt(this.value);
+            console.log(size);
+    });
+}
+$("seednum").addEventListener('change', ()=> {
+    initial = parseInt($("seednum").value);
+    console.log(initial);
+})
+$("button-tutorial").addEventListener('click', showTutorial);
+$("close-tutorial").addEventListener('click', showTutorial);
+$("button-classification").addEventListener('click', displayClassification);
+$("close-classification").addEventListener('click', closeClassification);
+$("start").addEventListener('click', () => {
+    startGame(nickOne, size, initial);
+    if(pcGame) {
+        setBoard(nickOne, nickOne, nickTwo, seedArray);
+    }
+});
+$("pc-start").addEventListener('click', () => {
+    startGame(computerName, size, initial);
+    setBoard(computerName, nickOne, computerName, seedArray);
+});
+$("pc-checkbox").addEventListener('change', ()=> {
+    pcGame = checkbox.checked;
+    display();
+});
+$("quit").addEventListener('click', quitGame);
 
 // GENERAL ANIMATIONS ************ 
 
@@ -370,8 +387,7 @@ function makeMove(player, id) {
 }
 
 // *****************************
-function startGame(playerStart) {
-    if(!pcGame) return;
+function startGame(playerOneName, newsize, newinitial) {
     if(!logged) {
         alert("Please Log In!");
         return;
@@ -380,14 +396,12 @@ function startGame(playerStart) {
     var toggleMode = true;
     toggleBoard(toggleMode);
 
-    playerTwoTurn = playerStart;
-
-    size = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
-    seedNumber = parseInt($("seednum").value);
+    size = newsize;
+    initial = newinitial;
 
     $('quit').value = 'Quit';
-    nickOne = $("p1-input").value;
-    nickTwo = "Computer";
+    nickOne = playerOneName;
+    nickTwo = "Waiting for oponent...";
 
     let upperRow = $("upper-row");
     let lowerRow = $("lower-row");
@@ -398,14 +412,16 @@ function startGame(playerStart) {
         newHole.classList.add('hole');
         upperRow.appendChild(newHole);
     }
-    for (let i = 0; i < size; i++) {
-        let newHole = document.createElement('div');
-        newHole.id = 'lower-hole-' + i;
-        newHole.classList.add('hole');
-        lowerRow.appendChild(newHole);
-        newHole.addEventListener('click', () => {
-            makeMove(0, i)
-        })
+    if(pcGame) {
+        for (let i = 0; i < size; i++) {
+            let newHole = document.createElement('div');
+            newHole.id = 'lower-hole-' + i;
+            newHole.classList.add('hole');
+            lowerRow.appendChild(newHole);
+            newHole.addEventListener('click', () => {
+                makeMove(0, i)
+            })
+        }
     }
 
     if (nickOne != "") {
@@ -420,12 +436,20 @@ function startGame(playerStart) {
         if (i === size || i === (2 * size + 1)) {
             seedArray[i] = 0;
         } else {
-            seedArray[i] = seedNumber;
+            seedArray[i] = initial;
         }
     }
-    updateGame();
 }
 
+function setBoard(playerTurn, playerOneName, playerTwoName, seedDisp) {
+    nickTwo = playerTwoName;
+    if (nickTwo != "") {
+        nickTwoDisplay.innerHTML = nickTwo;
+    }
+    playerTwoTurn = (playerTurn == playerTwoName) ? true : false;
+    seedArray = seedDisp;
+    updateGame();
+}
 
 function quitGame() {
     var toggleMode = false;
