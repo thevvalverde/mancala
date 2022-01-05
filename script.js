@@ -19,6 +19,11 @@ $("quit").addEventListener('click', quitGame);
 //$("upper-row"),addEventListener('hoverOnUpperRow', false);
 //$("upper-row"),addEventListener('hoverOutUpperRow', false);
 
+//      Global Variables
+
+var logged = false;
+
+
 //      General Animations
 
 function sleep(ms) {
@@ -58,6 +63,7 @@ let gameOver = false;
 let seedArray;
 let classifications = [];
 let n;
+let seedNumber;
 let checkbox = $("pc-checkbox");
 
 // ******************************
@@ -354,6 +360,11 @@ async function toggleBoard(toggleMode) {
 
 
 function startGame(playerStart) {
+    if(!checkbox.checked) return;
+    if(!logged) {
+        alert("Please Log In!");
+        return;
+    }
     gameOver = false;
     var toggleMode = true;
     toggleBoard(toggleMode);
@@ -362,7 +373,7 @@ function startGame(playerStart) {
 
     let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
     n = cavityNumber;
-    let seedNumber = parseInt($("seednum").value);
+    seedNumber = parseInt($("seednum").value);
     $('quit').value = 'Quit';
     let player1 = $("p1-input").value;
     // let player2 = $("p2-input").value;
