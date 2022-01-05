@@ -7,6 +7,7 @@ var userpass = "";
 var usernick = "";
 
 var base = "http://twserver.alunos.dcc.fc.up.pt:8008"
+var eventSource;
 
 function updateUI(logged) {
     if(logged) {
@@ -103,9 +104,11 @@ function join(group, usernick, userpass, size, initial) {
     request.onreadystatechange = () => {
         // print JSON response
         if (request.readyState === 4) {
-            console.log(request.response);
+            console.log(request.status);
             if(request.status===200) {
                 alert("joined! :)");
+                let response = JSON.parse(request.response);
+                update(response.game);
             } else if (request.status===400) {
                 alert("Unexpected error!")
             }
@@ -115,4 +118,23 @@ function join(group, usernick, userpass, size, initial) {
     request.withCredentials = false;
     request.open('POST', url);
     request.send(JSON.stringify(data));
+}
+
+function update(gamehash) {
+    //TODO: how does this work???
+    let url = base + "/update?";
+    url += "nick=" + usernick;
+    url += "&game=" + gamehash
+    console.log(url);
+    eventSource = new EventSource(url)
+    eventSource.onerror = (e) => {
+        console.log(e);
+    }
+    eventSource.onopen = (e) => {
+        console.log("Connected");
+    }
+    eventSource.onmessage = (e) => {
+        console.log(e.data);
+    }
+
 }

@@ -12,19 +12,37 @@ $("start").addEventListener('click', () => {
 $("pc-start").addEventListener('click', () => {
     startGame(true)
 });
-$("pc-checkbox").addEventListener('change', display);
+$("pc-checkbox").addEventListener('change', ()=> {
+    pcGame = checkbox.checked;
+    display();
+});
 $("quit").addEventListener('click', quitGame);
-//$("lower-row"),addEventListener('hoverOnLowerRow', false);
-//$("lower-row"),addEventListener('hoverOutLowerRow', false);
-//$("upper-row"),addEventListener('hoverOnUpperRow', false);
-//$("upper-row"),addEventListener('hoverOutUpperRow', false);
 
-//      Global Variables
+// GLOBAL VARIABLES ***************
 
-var logged = false;
+let scoreOneDisplay = $("p1-score");
+let scoreTwoDisplay = $("p2-score");
+let nickOneDisplay = $("p1-name");
+let nickTwoDisplay = $("p2-name");
+let statusOneDisplay = $("player-one-status");
+let statusTwoDisplay = $("player-two-status");
+let checkbox = $("pc-checkbox");
 
+let seedArray = [];                         // Array of current board state
+let size = 6;                               // Number of cavities
+let initial = 4;                            // Initial number of seeds in each cavity
+let pcGame = checkbox.checked;              // AI Game?
 
-//      General Animations
+let classifications = [];                   // List of Top Scores
+
+let nickOne = "Jogador 1";         
+let nickTwo = "Jogador 2";
+let playerTwoTurn = false;
+
+let logged = false;
+let gameOver = false;
+
+// GENERAL ANIMATIONS ************ 
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -56,18 +74,6 @@ function unfade(element) {
     }, 10);
 }
 
-// GAME VARIABLES ***************
-
-let playerTwoTurn = false;
-let gameOver = false;
-let seedArray;
-let classifications = [];
-let n;
-let seedNumber;
-let checkbox = $("pc-checkbox");
-
-// ******************************
-
 // GAME UPDATES *****************
 
 function updateGame() {
@@ -77,83 +83,72 @@ function updateGame() {
 }
 
 function updateScore() {
-
-    let scoreOne = $("p1-score");
-    let scoreTwo = $("p2-score");
-
-    scoreOne.innerHTML = 'Seeds: ' + seedArray[n];
-    scoreTwo.innerHTML = 'Seeds: ' + seedArray[2 * n + 1];
+    scoreOneDisplay.innerHTML = 'Seeds: ' + seedArray[size];
+    scoreTwoDisplay.innerHTML = 'Seeds: ' + seedArray[2 * size + 1];
 }
 
 function updateBoard() {
-
-    for (let i = 0; i < seedArray.length; i++) {
-        let curr = seedArray[i];
-        // console.log('inserting ' + curr + ' seeds in ' + i);
-        if (i === n) {
+    for (let i = 0; i < (size+1)*2; i++) {
+        let seeds = seedArray[i];
+        if (i === size) {
             let p1Cav = $('right-container');
-            if (p1Cav.childElementCount != curr) {
+            if (p1Cav.childElementCount != seeds) {
                 p1Cav.textContent = '';
-                generateSeeds(p1Cav, curr);
+                generateSeeds(p1Cav, seeds);
             }
-        } else if (i === 2 * n + 1) {
+        } else if (i === 2 * size + 1) {
             let p2Cav = $('left-container');
-            if (p2Cav.childElementCount != curr) {
+            if (p2Cav.childElementCount != seeds) {
                 p2Cav.textContent = '';
-                generateSeeds(p2Cav, curr);
+                generateSeeds(p2Cav, seeds);
             }
-        } else if (i < n) {
+        } else if (i < size) {
             let p1Hole = $('lower-hole-' + i);
-            if (p1Hole.childElementCount != curr) {
+            if (p1Hole.childElementCount != seeds) {
                 p1Hole.textContent = '';
-                generateSeeds(p1Hole, curr);
+                generateSeeds(p1Hole, seeds);
             }
-            // console.log("looking for " + p1Hole.id);
         } else {
-            let p2Hole = $('upper-hole-' + (i - (n + 1)));
-            if (p2Hole.childElementCount != curr) {
+            let p2Hole = $('upper-hole-' + (i - (size + 1)));
+            if (p2Hole.childElementCount != seeds) {
                 p2Hole.textContent = '';
-                generateSeeds(p2Hole, curr);
+                generateSeeds(p2Hole, seeds);
             }
-            // console.log("looking for " + p2Hole.id);
         }
     }
 
 }
 
 async function updateStatus() {
-    let statusOne = $("player-one-status");
-    let statusTwo = $("player-two-status");
     let upperRow = document.getElementById('upper-row');
     let lowerRow = document.getElementById('lower-row');
 
-    for(let i = 0; i < n; i++) {
+    for(let i = 0; i < size; i++) {
         $('upper-hole-'+i).classList.remove("hole-current");
         $('lower-hole-'+i).classList.remove("hole-current");
     }
 
     if (!playerTwoTurn) {
         if(canPlay(0)) {
-            statusOne.innerHTML = 'Status: Playing';
-            statusTwo.innerHTML = 'Status: Waiting';
+            statusOneDisplay.innerHTML = 'Status: Playing';
+            statusTwoDisplay.innerHTML = 'Status: Waiting';
 
-            for(let i = 0; i < n; i++) {
+            for(let i = 0; i < size; i++) {
                 let hole = $('lower-hole-'+i);
                 hole.classList.add('hole-current');
             }
         }
     } else {
         if(canPlay(1)) {
-            statusOne.innerHTML = 'Status: Waiting';
-            statusTwo.innerHTML = 'Status: Playing';
-            for(let i = 0; i < n; i++) {
+            statusOneDisplay.innerHTML = 'Status: Waiting';
+            statusTwoDisplay.innerHTML = 'Status: Playing';
+            for(let i = 0; i < size; i++) {
                 $('upper-hole-'+i).classList.add('hole-current');
             }
-            if(checkbox.checked)
+            if(pcGame)
             {
               await sleep(1000);
               makeMovePC();
-              console.log("JOGADA DO PC");
             }
         }
     }
@@ -165,174 +160,22 @@ function updateClassifications(points) {
     classifications.sort();
     classifications.reverse();
     classifications = classifications.slice(0,10);
-    // console.log(classifications);
 }
 
-function canPlay(player) {
-    let sum = 0;
-    if(player===0) {
-        for(let i = 0; i < n; i++) {
-            sum += seedArray[i];
-        }
-    }else {
-        for(let i = n+1; i < 2*n+1; i++) {
-            sum += seedArray[i];
-        }
-    }
-    // console.log("n is " + n);
-    // console.log("player "+ player + " has " + sum + " seeds");
-    if(sum!==0) {
-        return true;
-    }
-    endGame();
-    return false;
-}
-
-function endGame() {
-    gameOver = true;
-    let statusOne = $("player-one-status");
-    let statusTwo = $("player-two-status");
-    countSeeds();
-    let scoreOne = seedArray[n];
-    let scoreTwo = seedArray[2*n+1];
-
-    if(scoreOne > scoreTwo) {
-        updateClassifications(scoreOne);
-        statusOne.innerHTML = $('p1-name').innerHTML + ' won!';
-        statusTwo.innerHTML = $('p2-name').innerHTML + ' lost!';
-    } else if(scoreTwo > scoreOne) {
-        statusOne.innerHTML = $('p1-name').innerHTML + ' lost!';
-        statusTwo.innerHTML = $('p2-name').innerHTML + ' won!';
-    } else {
-        statusOne.innerHTML = 'TIE!';
-        statusTwo.innerHTML = 'TIE!';
-    }
-    $('quit').value = 'Return to Main Screen';
-
-
-}
-
-function countSeeds() {
-    for(let i = 0; i < n; i++) {
-        seedArray[n] += seedArray[i];
-        seedArray[i] = 0;
-    }
-    for(let i = n+1; i < 2*n+1; i++) {
-        seedArray[2*n+1] += seedArray[i];
-        seedArray[i] = 0;
-    }
-    updateBoard();
-}
-
-
-function generateSeeds(id, seedNum) {
-    for (let i = 0; i < seedNum; i++) {
-        let leftm = (Math.floor(Math.random() * 70) + 5) + '%';
-        let topm = (Math.floor(Math.random() * 30) + 5) + '%';
-        let rotation = (Math.floor(Math.random() * 90));
-        let seed = document.createElement('div');
-        seed.classList.add('seed');
-        seed.style.width = 5 + '%';
-        seed.style.left = leftm;
-        seed.style.top = topm;
-        seed.style.transform = "rotate(" + rotation + "deg)";
-        id.appendChild(seed);
-    }
-}
-
-function makeMovePC()
-{
-  let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
-  let chosenHole = 0;
-
-  min = Math.ceil(0);
-  max = Math.floor(cavityNumber);
-  chosenHole = Math.floor(Math.random() * (max - min + 1)) + min;
-
-  makeMove(1, chosenHole);
-}
-
-function makeMove(player, id) {
-    updateGame();
-    if (playerTwoTurn != player || gameOver) {
-        // console.log("game over is " + gameOver);
-        // console.log("ptt is " + playerTwoTurn + " and player is " + player);
-        return;
-    }
-    let pos = player * (n + 1) + id;
-    let seeds = seedArray[pos];
-    // console.log("position " + pos + " of array = " + seeds);
-    seedArray[pos] = 0;
-    while (seeds--) {
-        pos++;
-        if (pos > 2 * n + 1) {
-            pos = 0;
-        }
-        if ((pos === n && player === 1) || (pos === (2 * n + 1) && player === 0)) { // skip adversary's container
-            seeds++;
-            continue;
-        }
-        seedArray[pos]++;
-        // console.log("inserting seed in position " + pos);
-    }
-    let inversePos = -(pos-2*n);
-    // console.log("pos: " + pos +", inverse pos: " + inversePos);
-    if ((player === 0 && pos != n) || (player === 1 && pos != 2*n+1)) { // Change current player if last pos is not their container
-        playerTwoTurn = !playerTwoTurn;
-    }
-    if(pos != n && pos != 2*n+1 && seedArray[pos]===1 && ((player === 0 && pos < n) || (player === 1 && pos > n))) {
-        let transferingSeeds = seedArray[pos] + seedArray[inversePos];
-        seedArray[pos] = 0;
-        seedArray[inversePos] = 0;
-        if(player) {
-            seedArray[2*n+1] += transferingSeeds;
-        } else {
-            seedArray[n] += transferingSeeds;
-        }
-    }
-    updateGame();
-}
-
-// *****************************
-
-async function displayRegister() {
-    console.log("AAAAAAA");
-    let registerScreen = $("register-screen");
-
-    if (registerScreen.style.opacity == 0) {
-        unfade(registerScreen);
-        await sleep(300);
-        registerScreen.classList.toggle("hidden");
-        registerScreen.style.opacity = 1;
-    } else {
-        fade(registerScreen);
-        await sleep(300);
-        registerScreen.classList.toggle("hidden");
-        registerScreen.style.opacity = 0;
-    }
-
-}
+// UI DISPLAY ******************
 
 function display() {
     let options = document.getElementsByClassName("pc-options");
 
-    if (checkbox.checked == true) {
+    if (pcGame) {
         for (i = 0; i < options.length; i++) {
             options[i].classList.remove("hidden");
         }
-        // $("p2-input").value = "AI Player";
-        // $("p2-input").readOnly = true;
-        // $("p2-input-pass").setAttribute("disabled", true);
     } else {
         for (i = 0; i < options.length; i++) {
             options[i].classList.add("hidden");
         }
-        // $("p2-input").value = "";
-        // $("p2-input").readOnly = false;
-        // $("p2-name").innerHTML = "Player 2";
-        // $("p2-input-pass").removeAttribute("disabled");
     }
-
 }
 
 async function toggleBoard(toggleMode) {
@@ -351,95 +194,11 @@ async function toggleBoard(toggleMode) {
         fade(gameboard);
         await sleep(300);
         gameboard.classList.toggle("hidden");
-        $("p1-name").innerHTML = "Player 1";
+        nickOneDisplay.innerHTML = nickOne;
         homescreen.classList.toggle("hidden");
         unfade(homescreen);
     }
 
-}
-
-
-function startGame(playerStart) {
-    if(!checkbox.checked) return;
-    if(!logged) {
-        alert("Please Log In!");
-        return;
-    }
-    gameOver = false;
-    var toggleMode = true;
-    toggleBoard(toggleMode);
-
-    playerTwoTurn = playerStart;
-
-    let cavityNumber = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
-    n = cavityNumber;
-    seedNumber = parseInt($("seednum").value);
-    $('quit').value = 'Quit';
-    let player1 = $("p1-input").value;
-    // let player2 = $("p2-input").value;
-    let player2 = "Player 2";
-
-    let upperRow = $("upper-row");
-    let lowerRow = $("lower-row");
-
-    for (let i = cavityNumber - 1; i >= 0; i--) {
-        let newHole = document.createElement('div');
-        newHole.id = 'upper-hole-' + i;
-        newHole.classList.add('hole');
-        upperRow.appendChild(newHole);
-        if(!checkbox.checked)
-        {
-          newHole.addEventListener('click', () => {
-            makeMove(1, i)
-          })
-        }
-    }
-    for (let i = 0; i < cavityNumber; i++) {
-        let newHole = document.createElement('div');
-        newHole.id = 'lower-hole-' + i;
-        newHole.classList.add('hole');
-        lowerRow.appendChild(newHole);
-        newHole.addEventListener('click', () => {
-            makeMove(0, i)
-        })
-    }
-
-    if (player1 != "") {
-        $("p1-name").innerHTML = player1;
-    }
-    if (player2 != "") {
-        $("p2-name").innerHTML = player2;
-    }
-
-    seedArray = new Array(2 * cavityNumber + 2);
-    for (let i = 0; i < 2 * cavityNumber + 2; i++) {
-        if (i === cavityNumber || i === (2 * cavityNumber + 1)) {
-            seedArray[i] = 0;
-        } else {
-            seedArray[i] = seedNumber;
-        }
-    }
-    updateGame();
-}
-
-
-function quitGame() {
-    var toggleMode = false;
-    toggleBoard(toggleMode);
-
-    let upperRow = $("upper-row");
-    let child = upperRow.lastElementChild;
-    while (child) {
-        upperRow.removeChild(child);
-        child = upperRow.lastElementChild;
-    }
-
-    let lowerRow = $("lower-row");
-    child = lowerRow.lastElementChild;
-    while (child) {
-        lowerRow.removeChild(child);
-        child = lowerRow.lastElementChild;
-    }
 }
 
 async function showTutorial() {
@@ -492,4 +251,197 @@ async function closeClassification() {
 
 
     list.innerHTML = '';
+}
+
+function canPlay(player) {
+    let sum = 0;
+    if(player===0) {
+        for(let i = 0; i < size; i++) {
+            sum += seedArray[i];
+        }
+    }else {
+        for(let i = size+1; i < 2*size+1; i++) {
+            sum += seedArray[i];
+        }
+    }
+    if(sum!==0) {
+        return true;
+    }
+    endGame();
+    return false;
+}
+
+function endGame() {
+    gameOver = true;
+    countSeeds();
+    let scoreOne = seedArray[size];
+    let scoreTwo = seedArray[2*size+1];
+
+    if(scoreOne > scoreTwo) {
+        updateClassifications(scoreOne);
+        statusOneDisplay.innerHTML = nickOne + ' won!';
+        statusTwoDisplay.innerHTML = nickTwo + ' lost!';
+    } else if(scoreTwo > scoreOne) {
+        statusOneDisplay.innerHTML = nickOne + ' lost!';
+        statusTwoDisplay.innerHTML = nickTwo + ' won!';
+    } else {
+        statusOneDisplay.innerHTML = 'TIE!';
+        statusTwoDisplay.innerHTML = 'TIE!';
+    }
+    $('quit').value = 'Return to Main Screen';
+
+
+}
+
+function countSeeds() {
+    for(let i = 0; i < size; i++) {
+        seedArray[size] += seedArray[i];
+        seedArray[i] = 0;
+    }
+    for(let i = size+1; i < 2*size+1; i++) {
+        seedArray[2*size+1] += seedArray[i];
+        seedArray[i] = 0;
+    }
+    updateBoard();
+}
+
+function generateSeeds(id, seedNum) {
+    for (let i = 0; i < seedNum; i++) {
+        let leftm = (Math.floor(Math.random() * 70) + 5) + '%';
+        let topm = (Math.floor(Math.random() * 30) + 5) + '%';
+        let rotation = (Math.floor(Math.random() * 90));
+        let seed = document.createElement('div');
+        seed.classList.add('seed');
+        seed.style.width = 5 + '%';
+        seed.style.left = leftm;
+        seed.style.top = topm;
+        seed.style.transform = "rotate(" + rotation + "deg)";
+        id.appendChild(seed);
+    }
+}
+
+function makeMovePC()
+{
+  let choice = 0;
+  let tmp = 0;
+
+  while(tmp === 0) {
+    choice = Math.floor(Math.random() * size);
+    tmp = seedArray[(size+1)+choice];
+    console.log("choice: " + choice + ", tmp = " + tmp);
+  }
+
+  makeMove(1, choice);
+}
+
+function makeMove(player, id) {
+    if (playerTwoTurn != player || gameOver) {
+        return;
+    }
+    let pos = player * (size + 1) + id;
+    let seeds = seedArray[pos];
+    seedArray[pos] = 0;
+    while (seeds--) {
+        pos++;
+        if (pos > 2 * size + 1) {
+            pos = 0;
+        }
+        if ((pos === size && player === 1) || (pos === (2 * size + 1) && player === 0)) { // skip adversary's container
+            seeds++;
+            continue;
+        }
+        seedArray[pos]++;
+    }
+    let inversePos = -(pos-2*size);
+    if ((player === 0 && pos != size) || (player === 1 && pos != 2*size+1)) { // Change current player if last pos is not their container
+        playerTwoTurn = !playerTwoTurn;
+    }
+    if(pos != size && pos != 2*size+1 && seedArray[pos]===1 && ((player === 0 && pos < size) || (player === 1 && pos > size))) {
+        let transferingSeeds = seedArray[pos] + seedArray[inversePos];
+        seedArray[pos] = 0;
+        seedArray[inversePos] = 0;
+        if(player) {
+            seedArray[2*size+1] += transferingSeeds;
+        } else {
+            seedArray[size] += transferingSeeds;
+        }
+    }
+    updateGame();
+}
+
+// *****************************
+function startGame(playerStart) {
+    if(!pcGame) return;
+    if(!logged) {
+        alert("Please Log In!");
+        return;
+    }
+    gameOver = false;
+    var toggleMode = true;
+    toggleBoard(toggleMode);
+
+    playerTwoTurn = playerStart;
+
+    size = parseInt(document.querySelector('input[name="cavity-number"]:checked').value);
+    seedNumber = parseInt($("seednum").value);
+
+    $('quit').value = 'Quit';
+    nickOne = $("p1-input").value;
+    nickTwo = "Computer";
+
+    let upperRow = $("upper-row");
+    let lowerRow = $("lower-row");
+
+    for (let i = size - 1; i >= 0; i--) {
+        let newHole = document.createElement('div');
+        newHole.id = 'upper-hole-' + i;
+        newHole.classList.add('hole');
+        upperRow.appendChild(newHole);
+    }
+    for (let i = 0; i < size; i++) {
+        let newHole = document.createElement('div');
+        newHole.id = 'lower-hole-' + i;
+        newHole.classList.add('hole');
+        lowerRow.appendChild(newHole);
+        newHole.addEventListener('click', () => {
+            makeMove(0, i)
+        })
+    }
+
+    if (nickOne != "") {
+        nickOneDisplay.innerHTML = nickOne;
+    }
+    if (nickTwo != "") {
+        nickTwoDisplay.innerHTML = nickTwo;
+    }
+
+    seedArray = new Array(2 * size + 2);
+    for (let i = 0; i < 2 * size + 2; i++) {
+        if (i === size || i === (2 * size + 1)) {
+            seedArray[i] = 0;
+        } else {
+            seedArray[i] = seedNumber;
+        }
+    }
+    updateGame();
+}
+
+
+function quitGame() {
+    var toggleMode = false;
+    toggleBoard(toggleMode);
+
+    let upperRow = $("upper-row");
+    let child = upperRow.lastElementChild;
+    while (child) {
+        upperRow.removeChild(child);
+        child = upperRow.lastElementChild;
+    }
+
+    let lowerRow = $("lower-row");
+    child = lowerRow.lastElementChild;
+    while (child) {
+        lowerRow.removeChild(child);
+        child = lowerRow.lastElementChild;
+    }
 }
