@@ -1,5 +1,7 @@
 $("login-button").addEventListener('click', getRegisterData);
 $("start").addEventListener('click', getJoinData);
+$("quit").addEventListener('click', getLeaveData);
+$("button-classification").addEventListener('click', ranking);
 
 var group = 12915;
 
@@ -138,7 +140,14 @@ function update() {
     }
     eventSource.onmessage = (e) => {
         let data = JSON.parse(e.data);
-        getBoardData(data);
+        console.log(data);
+        if(data.hasOwnProperty("winner")) {
+            endGame(data["winner"]);
+            eventSource.close();
+        }
+        if(data.hasOwnProperty("board")) {
+            getBoardData(data);
+        }
     }
 
 }
@@ -200,4 +209,46 @@ function notify(nick, password, game, move) {
     request.withCredentials = false;
     request.open('POST', url);
     request.send(JSON.stringify(data));
+}
+
+function getLeaveData() {
+    let nick = usernick;
+    let password= userpass;
+    let game = gamehash;
+    leave(game, nick, password);
+}
+
+function leave(game, nick, password) {
+    const data = {
+        game,
+        nick,
+        password
+    }
+
+    let url = base + "/leave";
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if(request.readyState === 4) {
+            console.log(request.response);   
+        }
+    };
+
+    request.withCredentials = false;
+    request.open('POST', url);
+    request.send(JSON.stringify(data));
+
+}
+
+function ranking() {
+    let url = base + "/ranking";
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if(request.readyState === 4) {
+            console.log(request.response);   
+            displayClassification(JSON.parse(request.response));
+        }
+    };
+    request.withCredentials = false;
+    request.open('POST', url);
+    request.send("{}");
 }

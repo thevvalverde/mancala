@@ -41,7 +41,6 @@ $("seednum").addEventListener('change', ()=> {
 })
 $("button-tutorial").addEventListener('click', showTutorial);
 $("close-tutorial").addEventListener('click', showTutorial);
-$("button-classification").addEventListener('click', displayClassification);
 $("close-classification").addEventListener('click', closeClassification);
 $("start").addEventListener('click', () => {
     startGame(nickOne, size, initial);
@@ -234,18 +233,16 @@ async function showTutorial() {
     }
 }
 
-async function displayClassification() {
+async function displayClassification(data) {
     // console.log(classifications);
     let topBoard = $("classification-board");
     let list = $("classification-list");
+    let ranking = data["ranking"];
 
     for (i = 0; i < 10; i++) {
         let item = document.createElement('li');
-        if (classifications[i] !== undefined) {
-            item.appendChild(document.createTextNode(classifications[i] + ' points'));
-        } else {
-            item.appendChild(document.createTextNode('--------'));
-        }
+        let cur = ranking[i];
+        item.innerHTML = "<p><b>" + cur["nick"] + " </b>: " + cur["victories"] + " victories in " + cur["games"] + " games.</p>";
         list.appendChild(item);
     }
 
@@ -288,25 +285,22 @@ function canPlay(player) {
     return false;
 }
 
-function endGame() {
+function endGame(winner) {
+    if(winner==null) {
+        quitGame();
+        return;
+    } 
     gameOver = true;
     countSeeds();
-    let scoreOne = seedArray[size];
-    let scoreTwo = seedArray[2*size+1];
-
-    if(scoreOne > scoreTwo) {
-        updateClassifications(scoreOne);
-        statusOneDisplay.innerHTML = nickOne + ' won!';
-        statusTwoDisplay.innerHTML = nickTwo + ' lost!';
-    } else if(scoreTwo > scoreOne) {
-        statusOneDisplay.innerHTML = nickOne + ' lost!';
-        statusTwoDisplay.innerHTML = nickTwo + ' won!';
-    } else {
-        statusOneDisplay.innerHTML = 'TIE!';
-        statusTwoDisplay.innerHTML = 'TIE!';
+    if(winner===nickOne) {
+        statusOneDisplay.innerHTML = 'won!';
+        statusTwoDisplay.innerHTML = 'lost!';
+    } else if(winner===nickTwo) {
+        statusOneDisplay.innerHTML = 'lost!';
+        statusTwoDisplay.innerHTML = 'won!';
     }
-    $('quit').value = 'Return to Main Screen';
 
+    $('quit').value = 'Return to Main Screen';
 
 }
 
